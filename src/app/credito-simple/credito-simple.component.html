@@ -1,0 +1,394 @@
+<div class="row">
+  <div class="col-lg-6">
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4 class="tituloCredito">Crédito simple</h4>
+       <br>
+       <br>
+       <br> 
+        <h4>Destinos</h4>
+        <mat-form-field class="example-full-width">
+          <mat-label>Tipo de Destino</mat-label>
+          <mat-select [(value)]="Destino">
+            <mat-option value="1">Capital de Trabajo permanente</mat-option>
+            <mat-option value="2">Inversión</mat-option>
+            <mat-option value="3">Descuento de Flujos</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div *ngIf="Destino==2 || Destino==3">
+          <mat-form-field appearance="fill">
+            <mat-label>Aforo %</mat-label>
+            <input type="number" matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4>Moneda</h4>
+        <mat-form-field class="example-full-width">
+          <mat-label>Moneda</mat-label>
+          <mat-select [(value)]="moneda">
+            <mat-option value="1">Pesos</mat-option>
+            <mat-option value="2">Dólares</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4>Forma de Disposición</h4>
+        <mat-form-field class="example-full-width">
+          <mat-label></mat-label>
+          <mat-select [(value)]="formaDispo">
+            <mat-option value="1">Una Disposición</mat-option>
+            <mat-option value="2">Varias Disposiciónes</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4>Plazos</h4>
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>PLazo del contrato</mat-label>
+              <mat-select [(ngModel)]='plazContra'>
+                <mat-option value="36">36</mat-option>
+                <mat-option value="48">48</mat-option>
+                <mat-option value="60">60</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Plazo máximo de disposición</mat-label>
+              <input (blur)="superPlazo()" [(ngModel)]='PlazoMaxi' type="number" matInput>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Plazo máximo para disponer a 6 meses</mat-label>
+              <input (blur)="superPlazoDispo()" [(ngModel)]='PlazoMaxidispo' type="number" matInput>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4>Forma de pagos</h4>
+        <div class="row">
+          <div class="col-lg-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>Forma de pago de capital</mat-label>
+              <mat-select [(ngModel)]='plazContra'>
+                <mat-option value="1">Mensual</mat-option>
+                <mat-option value="2">Trimestral</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>Amortizaciones</mat-label>
+              <mat-select [(ngModel)]='amortizacion'>
+                <mat-option value="1">Igual</mat-option>
+                <mat-option value="2">Crecientes</mat-option>
+                <mat-option value="3">De acuerdo a la tabla de amortización</mat-option>
+                <mat-option value="4">Unico al final (Ballon)</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div class="row">
+          <div class="col-lg-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>Forma de pago de interes</mat-label>
+              <mat-select [(ngModel)]='formaInteres'>
+                <mat-option value="1">Mensual</mat-option>
+                <mat-option value="2">Bimestral</mat-option>
+                <mat-option value="3">Trimestral</mat-option>
+                <mat-option value="4">Semestral</mat-option>
+                <mat-option value="5">A vencimiento</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6">
+            <div *ngIf="formaInteres==5">
+              <mat-form-field class="example-full-width">
+                <mat-label>Capitaliza</mat-label>
+                <mat-select [(ngModel)]='Capitaliza'>
+                  <mat-option value="1">Si</mat-option>
+                  <mat-option value="2">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-5">
+        <mat-form-field class="example-full-width">
+          <mat-label>Periodo de gracia</mat-label>
+          <mat-select [(ngModel)]='gracia'>
+            <mat-option value="1">Si</mat-option>
+            <mat-option value="2">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-5">
+        <div *ngIf="gracia==1">
+          <mat-form-field appearance="fill">
+            <mat-label>Meses</mat-label>
+            <input type="number" matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4>Tasas</h4>
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Tasa</mat-label>
+              <mat-select [(ngModel)]='Tasa'>
+                <mat-option value="1">Variable</mat-option>
+                <mat-option value="2">Fija</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <div *ngIf="moneda==1">
+              <mat-form-field class="example-full-width">
+                <mat-label>Tasa Base</mat-label>
+                <mat-select [(value)]="tasabase">
+                  <mat-option value="1">TIIE </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div *ngIf="moneda==2">
+              <mat-form-field class="example-full-width">
+                <mat-label>Tasa Base</mat-label>
+                <mat-select [(value)]="tasabase">
+                  <mat-option value="2">LIBOR</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div *ngIf="tasabase==2">
+              <mat-form-field class="example-full-width">
+                <mat-label>LIBOR</mat-label>
+                <mat-select [(value)]="libor">
+                  <mat-option value="1">30</mat-option>
+                  <mat-option value="2">60</mat-option>
+                  <mat-option value="3">90</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Margen</mat-label>
+              <input type="number" matInput>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="fill">
+              <mat-label>Tasa moratoria</mat-label>
+              <input [(ngModel)]="tasaMora" #sel1 (blur)="pptos()" type="text" matInput>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4"></div>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4>Comisiones</h4>
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Comision</mat-label>
+              <mat-select [(value)]="comision">
+                <mat-option value="Apertura">Apertura </mat-option>
+                <mat-option value="Disposición">Disposición </mat-option>
+                <mat-option value="Aniversario">Aniversario </mat-option>
+                <mat-option value="Administración">Administración </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <table>
+              <tr *ngFor="let item of lista">
+                <td>
+                  {{item.comsion}}
+                </td>
+                <td>
+                  {{item.porcentaje}}%
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field appearance="fill">
+              <mat-label>% Comision</mat-label>
+              <input [(ngModel)]='porComision' type="number" matInput>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <button mat-button class="boton-verpormas" (click)="addlista()">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4>Otras condiciones</h4>
+        <mat-form-field class="example-full-width">
+          <mat-label>Fuente de Fondeo </mat-label>
+          <mat-select [(value)]="fondeo">
+            <mat-option value="1">NAFIN </mat-option>
+            <mat-option value="2">FEGA </mat-option>
+            <mat-option value="3">BANCOMEXT </mat-option>
+            <mat-option value="4">Recursos propios</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row" *ngIf="Destino==2">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div class="row">
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Descripción de la Inversión</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Valor de la inversión</mat-label>
+              <input type="number" matInput>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <mat-label>Financiamiento de la inversión</mat-label>
+              <input matInput type="number">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row" *ngIf="Destino==3">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <mat-form-field appearance="fill">
+          <mat-label>Fondo de reserva para capital e interés</mat-label>
+          <input [(ngModel)]='fonCapInt' type="number" matInput>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+  </div>
+
+
+
+  <div class="col-lg-6">
+    <h4>Tipo de producto T24</h4>
+
+    <div *ngIf="fondeo==4 && Capitaliza==1">
+      <h3>CREDITO SIMPLE TASA FLOTANTE CON REF</h3>
+      <img src="assets/t24cre/6.PNG">
+    </div>
+
+    <div *ngIf="fondeo==2 && Capitaliza==1">
+      <h3>CREDITO SIMPLE FIRA</h3>
+      <img src="assets/t24cre/7.PNG">
+    </div>
+
+     <div *ngIf="fondeo==1 && Capitaliza==2">
+      <h3>CREDITO SIMPLE NAFIN</h3>
+      <img src="assets/t24cre/8.PNG">
+    </div>
+
+    <div *ngIf="fondeo==4 && Capitaliza==2">
+      <h3>CREDITO SIMPLE PROYECTO DE INVERSION</h3>
+      <img src="assets/t24cre/9.PNG">
+    </div>
+
+    <div *ngIf="fondeo==2 && Capitaliza==2">
+      <h3>CREDITO SIMPLE FIRA SIN REFINANCIAMIENTO</h3>
+      <img src="assets/t24cre/10.PNG">
+    </div>
+
+  </div>
+
+</div>

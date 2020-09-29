@@ -1,0 +1,27 @@
+.mat-form-field{
+    width: 90%;
+}
+
+.boton-verpormas{
+    color: #fff;
+    background-color:#C3D500;
+    border-color:#C3D500;
+    font-family: Duplicate Slab;
+    margin-left: 1%;
+}
+.boton-verpormas:hover{
+    color: #fff;
+    background-color:#C3D500;
+    border-color:#C3D500;
+    Box-shadow: 0 0 15px rgba(9, 176, 201, 0.7);
+    transition: 1s;
+}
+table {
+    width: 100%;
+}
+input#file {
+    width: 100%;
+}
+mat-label.letraSize.ng-star-inserted {
+    font-size: 21px;
+}

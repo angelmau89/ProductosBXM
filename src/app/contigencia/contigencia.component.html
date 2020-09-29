@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-lg-6">
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4 class="tituloCredito">Contingente</h4>
+       <br>
+       <br>
+       <br> 
+        <h4>Modalidad</h4>
+        <mat-form-field class="example-full-width">
+          <mat-label>Modalidad</mat-label>
+          <mat-select [(value)]="modalidad">
+            <mat-option value="1">Cambios</mat-option>
+            <mat-option value="2">Derivados</mat-option>
+            <mat-option value="3">Almacenadora</mat-option>
+            <mat-option value="4">Operador Programa </mat-option>
+            <mat-option value="5">Adminsitración de Cartera </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <mat-form-field class="example-full-width">
+          <mat-label>Programa</mat-label>
+          <mat-select [(value)]="programa">
+            <mat-option *ngIf="modalidad==1" value="1">Intradía</mat-option>
+            <mat-option *ngIf="modalidad==3 || modalidad==4 || modalidad==5" value="2">Programas de Milagro</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div *ngIf="programa==1">
+          <mat-form-field class="example-full-width">
+            <mat-label>Destino</mat-label>
+            <mat-select [(value)]="programa">
+              <mat-option value="1">Compra de Divisas</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div *ngIf="modalidad==2">
+          <mat-form-field class="example-full-width">
+            <mat-label>Tipo de producto</mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div *ngIf="modalidad==2">
+          <mat-form-field appearance="fill">
+            <mat-label>THRESHOLD</mat-label>
+            <input type="number" matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <h4>Moneda</h4>
+        <mat-form-field class="example-full-width">
+          <mat-label>Moneda</mat-label>
+          <mat-select [(value)]="moneda">
+            <mat-option value="1">Pesos</mat-option>
+            <mat-option value="2">Dólares</mat-option>
+            <mat-option *ngIf="modalidad==1 || modalidad==2" value="2">Otras Divisas</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+
+
+
+
+  </div><!-- Fin de la primera midad -->
+  <!-- Segunda parte -->
+  <div class="col-lg-6"></div>
+</div>
