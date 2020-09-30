@@ -25,3 +25,15 @@ input#file {
 mat-label.letraSize.ng-star-inserted {
     font-size: 21px;
 }
+
+.estatusLinea{
+    border-radius: 52px 52px 52px 52px!important;
+    -moz-border-radius: 52px 52px 52px 52px!important;
+    -webkit-border-radius: 52px 52px 52px 52px!important;
+    border: 0px solid #000000!important;
+    background-color: #a4dee7;
+    text-align: center;
+    padding-top: 3%;
+    font-family: Duplicate Slab;
+    font-weight: bolder;
+}
