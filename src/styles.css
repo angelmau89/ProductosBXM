@@ -58,3 +58,37 @@ span.mat-button-wrapper {
     font-weight: bolder;
     font-size: 20px;
 }
+
+.typElement{
+    float: right;
+    margin-top: 4%;
+    margin-right: 6%;
+}
+.labelNegro{
+    color: black;
+    font-weight: 900;
+}
+input#mat-input-1 {
+    font-weight: 900;
+    color: black;
+}
+input#mat-input-4 {
+    font-weight: 900;
+    color: black;
+}
+input#mat-input-3 {
+    font-weight: 900;
+    color: black;
+}
+input#mat-input-5 {
+    font-weight: 900;
+    color: black;
+}
+.tablefondeo{
+    width: 33%!important;
+}
+.typElementDay {
+    float: right;
+    margin-top: 4%;
+    margin-right: 3%;
+}

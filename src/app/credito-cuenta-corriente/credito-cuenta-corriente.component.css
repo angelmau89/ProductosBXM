@@ -19,9 +19,7 @@
 table {
     width: 100%;
 }
-input#file {
-    width: 100%;
-}
+
 mat-label.letraSize.ng-star-inserted {
     font-size: 18px;
 }
