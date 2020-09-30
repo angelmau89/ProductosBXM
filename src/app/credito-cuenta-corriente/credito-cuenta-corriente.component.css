@@ -23,7 +23,7 @@ input#file {
     width: 100%;
 }
 mat-label.letraSize.ng-star-inserted {
-    font-size: 21px;
+    font-size: 18px;
 }
 
 .estatusLinea{
@@ -33,7 +33,8 @@ mat-label.letraSize.ng-star-inserted {
     border: 0px solid #000000!important;
     background-color: #a4dee7;
     text-align: center;
-    padding-top: 3%;
+    padding-top: 2%;
     font-family: Duplicate Slab;
     font-weight: bolder;
+    font-size: 20px;
 }

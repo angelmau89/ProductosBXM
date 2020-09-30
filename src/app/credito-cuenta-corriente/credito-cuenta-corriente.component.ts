@@ -43,6 +43,10 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
   tasa;
   fondeo;
   capitaliza
+  tasaMorafija="T.O X 2 PP";
+  aux=0;
+  aux2=0;
+  margen;
   
 
   constructor() { }
@@ -61,10 +65,18 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     this.libor = 0;
   }
 
+
   pptos(){
     let valor= this.tasaMora;
-    this.tasaMora="T.O x "+valor+" pp"
+    if(parseInt(valor)>0){
+      let elemento :any = document.getElementById('tasamora');
+      elemento.type = "text";
+      this.tasaMora="T.O x "+valor+" PP";
+    }else{
+      this.tasaMora="";
+    }
   }
+
 
   vali120(){
     if(this.tasaMaxi>120)
@@ -153,6 +165,61 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     }
     
 
+  }
+
+  limpiar(){
+    this.tasaMora="";
+    let elemento :any = document.getElementById('tasamora');
+    elemento.type = "number";
+  }
+
+  funcioneRevision(){
+  
+
+    if(this.porComision<=99.99)
+    { 
+     
+      console.log((this.porComision+'').length);
+  
+      if((this.porComision+'').length<=5){
+        this.aux=this.porComision;
+      }else{
+        this.porComision=this.aux;
+      }
+      
+    }
+    else{
+     this.porComision=this.aux;
+    }
+    
+  }
+
+  funcioneRevision2(){
+  
+
+    if(this.margen<=99.99)
+    { 
+     
+      console.log((this.margen+'').length);
+  
+      if((this.margen+'').length<=5){
+        this.aux2=this.margen;
+      }else{
+        this.margen=this.aux2;
+      }
+      
+    }
+    else{
+     this.margen=this.aux2;
+    }
+    
+  }
+
+  limpiarComociones(){
+    this.porComision=null;
+  }
+  limpiarComociones2(item){
+    this.margen=null;
   }
 
 }

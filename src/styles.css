@@ -16,9 +16,45 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     Box-shadow: 0 0 15px rgba(9, 176, 201, 0.7);
     transition: 1s;
 }
+.boton-verpormas-producto{
+    color: #fff;
+    background-color:#343e48;
+    border-color:#C3D500;
+    font-family: Duplicate Slab;
+    margin-left: 1%;
+    width: 75%;
+}
+.boton-verpormas-producto:hover{
+    color: #fff;
+    background-color:#778692;
+    border-color:#C3D500;
+    Box-shadow: 0 0 15px rgba(9, 176, 201, 0.7);
+    transition: 1s;
+}
+.center {
+    text-align: center;
+}
 table {
     width: 100%;
 }
 .tituloCredito{
     color: #3bb0c9;
+}
+.row {
+    margin-bottom: 3%;
+}
+span.mat-button-wrapper {
+    font-size: 20px;
+}
+.estatusLinea{
+    border-radius: 52px 52px 52px 52px!important;
+    -moz-border-radius: 52px 52px 52px 52px!important;
+    -webkit-border-radius: 52px 52px 52px 52px!important;
+    border: 0px solid #000000!important;
+    background-color: #a4dee7;
+    text-align: center;
+    padding-top: 2%;
+    font-family: Duplicate Slab;
+    font-weight: bolder;
+    font-size: 20px;
 }

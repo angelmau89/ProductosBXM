@@ -1,5 +1,20 @@
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-10">
+    <h4 class="tituloCredito">Crédito Cuenta Corriente</h4>
+        <br>
+        <h4>Estatus de las líneas:</h4>
+        <br>
+
+        <div class="row">
+          <div class="col-lg-4"><div class="estatusLinea"><label>Solicitud</label></div></div>
+          <div class="col-lg-4"><div class="estatusLinea"><label>Recalificación</label></div></div>
+          <div class="col-lg-4"><div class="estatusLinea"><label>Recalificación con aumento</label>
+           
+          </div>
+          <p class="center">Solo cuando le queda saldo por disponer al contrato</p>
+        </div>
+        </div>
 
     <div class="row">
       <div class="col-lg-1"></div>
@@ -71,8 +86,8 @@
         <h4>Plazos</h4>
         <div class="row">
           <div class="col-lg-4">
-            <mat-form-field class="example-full-width">
-              <mat-label>PLazo del contrato</mat-label>
+            <mat-form-field class="example-full-width ancho90">
+              <mat-label>Plazo del contrato</mat-label>
               <mat-select [(ngModel)]='plazContra'>
                 <mat-option value="36">36</mat-option>
                 <mat-option value="48">48</mat-option>
@@ -81,14 +96,14 @@
             </mat-form-field>
           </div>
           <div class="col-lg-4">
-            <mat-form-field appearance="fill">
-              <mat-label>Plazo máximo de disposición</mat-label>
+            <mat-form-field appearance="fill" class="ancho90">
+              <mat-label class="tamInput" >Plazo máximo de disposición</mat-label>
               <input (blur)="superPlazo()" [(ngModel)]='PlazoMaxi' type="number" matInput>
             </mat-form-field>
           </div>
           <div class="col-lg-4">
-            <mat-form-field appearance="fill">
-              <mat-label>Plazo máximo para disponer a 6 meses</mat-label>
+            <mat-form-field appearance="fill" class="ancho90">
+              <mat-label class="tamInput">Plazo máximo para disponer a 6 meses</mat-label>
               <input (blur)="superPlazoDispo()" [(ngModel)]='PlazoMaxidispo' type="number" matInput>
             </mat-form-field>
           </div>
@@ -361,7 +376,7 @@
 
 
 
-  <div class="col-lg-6">
+  <!-- <div class="col-lg-6">
     <h4>Tipo de producto T24</h4>
 
     <div *ngIf="fondeo==4 && Capitaliza==1">
@@ -389,6 +404,6 @@
       <img src="assets/t24cre/10.PNG">
     </div>
 
-  </div>
-
+  </div>-->
+  <div class="col-lg-1"></div>
 </div>

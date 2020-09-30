@@ -1,10 +1,11 @@
 <div class="row back_form">
-  <div class="col-lg-6">
-    <div class="row">
+  <!-- <div class="col-lg-6">
+    <div class="row"> -->
       <!-- new -->
       <div class="col-lg-1"></div><!-- new -->
-      <div class="col-lg-11">
+      <div class="col-lg-10">
         <!-- new -->
+
         <h4 class="tituloCredito">Crédito Cuenta Corriente</h4>
         <br>
         <h4>Estatus de las líneas:</h4>
@@ -13,7 +14,9 @@
         <div class="row">
           <div class="col-lg-4"><div class="estatusLinea"><label>Solicitud</label></div></div>
           <div class="col-lg-4"><div class="estatusLinea"><label>Recalificación</label></div></div>
-          <div class="col-lg-4"><div class="estatusLinea"><label>Recalificación con Aumento</label></div></div>
+          <div class="col-lg-4"><div class="estatusLinea"><label>Recalificación con aumento</label>
+           
+          </div></div>
         </div>
 
         <br>
@@ -21,7 +24,7 @@
           <div class="col-lg-4">
             <div>
               <mat-form-field appearance="fill">
-                <mat-label class="letraSize">Selecciona Crédito</mat-label>
+                <mat-label class="letraSize" >Selecciona crédito</mat-label>
                 <mat-select #sel (selectionChange)="modalidadCambio(sel.value)" [(value)]="modalidad">
                   <mat-option value="1">Tradicional</mat-option>
                   <mat-option value="2">Electrónico</mat-option>
@@ -35,7 +38,7 @@
               <mat-form-field class="example-full-width">
                 <br>
                 <br>
-                <mat-label>Tipo de Programa</mat-label>
+                <mat-label class="letraSize">Tipo de programa</mat-label>
                 <mat-select [(value)]="programa">
                   <mat-option value="1">Profertil</mat-option>
                   <mat-option value="2">Avío</mat-option>
@@ -48,23 +51,23 @@
               <br>
               <br>
               <mat-form-field class="example-full-width">
-                <mat-label>Destino</mat-label>
+                <mat-label class="letraSize">Destino</mat-label>
                 <mat-select [(value)]="Destino_Profertil">
                   <mat-option value="1">Compra de insumos y semillas</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
 
-            <div *ngIf="programa==1 && Destino_Profertil==1 ">
+            <!-- <div *ngIf="programa==1 && Destino_Profertil==1 ">
               <br>
               <br>
               <mat-form-field class="example-full-width">
-                <mat-label>Catalogo insumos y/o semillas</mat-label>
+                <mat-label class="letraSize">Catalogo insumos y/o semillas</mat-label>
                 <mat-select [(value)]="vatalogo">
                   <mat-option value="1">Maíz</mat-option>
                 </mat-select>
               </mat-form-field>
-            </div>
+            </div> -->
 
             <div *ngIf="programa==2 && modalidad==3">
               <br>
@@ -72,7 +75,7 @@
               <mat-form-field class="example-full-width">
                 <br>
                 <br>
-                <mat-label>Tipo de Programa</mat-label>
+                <mat-label class="letraSize">Tipo de programa</mat-label>
                 <mat-select [(value)]="Destino_Avio">
                   <mat-option value="1">Financiamiento</mat-option>
                 </mat-select>
@@ -83,7 +86,7 @@
               <br>
               <br>
               <mat-form-field class="example-full-width">
-                <mat-label>Unidades de producció</mat-label>
+                <mat-label class="letraSize">Unidades de producció</mat-label>
                 <mat-select [(value)]="vatalogo">
                   <mat-option value="1">Catalogo</mat-option>
                 </mat-select>
@@ -94,7 +97,7 @@
               <br>
               <br>
               <mat-form-field appearance="fill">
-                <mat-label>N° de unidades</mat-label>
+                <mat-label class="letraSize">N° de unidades</mat-label>
                 <input type="number" matInput>
               </mat-form-field>
             </div>
@@ -103,10 +106,10 @@
               <br>
               <br>
               <mat-form-field class="example-full-width">
-                <mat-label>Tipo de Destino</mat-label>
+                <mat-label class="letraSize">Tipo de destino</mat-label>
                 <mat-select [(value)]="Destino">
                   <mat-option value="1">Capital de trabajo</mat-option>
-                  <mat-option value="2">Eventualidades de Tesorería</mat-option>
+                  <mat-option value="2">Eventualidades de tesorería</mat-option>
                   <mat-option value="3">Descto. de cartera</mat-option>
                   <mat-option value="4">Otros</mat-option>
                 </mat-select>
@@ -117,7 +120,7 @@
               <br>
               <br>
               <mat-form-field appearance="fill">
-                <mat-label>Aforo%</mat-label>
+                <mat-label class="letraSize">Aforo%</mat-label>
                 <input type="number" matInput>
               </mat-form-field>
             </div>
@@ -126,7 +129,7 @@
               <br>
               <br>
               <mat-form-field appearance="fill">
-                <mat-label>Tipo de documento</mat-label>
+                <mat-label class="letraSize">Tipo de documento</mat-label>
                 <input [(ngModel)]='archivo' type="text" matInput>
               </mat-form-field>
               <br>
@@ -157,7 +160,7 @@
               <br>
               <br>
               <mat-form-field appearance="fill">
-                <mat-label>% Archivo</mat-label>
+                <mat-label class="letraSize">% Archivo</mat-label>
                 <input [(ngModel)]='porfile' type="number" matInput>
               </mat-form-field>
             </div>
@@ -184,7 +187,7 @@
     <div class="row">
       <div class="col-lg-4">
         <mat-form-field class="example-full-width">
-          <mat-label>Estatus de la Línea</mat-label>
+          <mat-label class="letraSize">Estatus de la Línea</mat-label>
           <mat-select [(value)]="estatus">
             <mat-option value="1">Solicitud</mat-option>
             <mat-option value="2">Recalificación</mat-option>
@@ -202,7 +205,7 @@
         <div class="row">
           <div class="col-lg-4">
             <mat-form-field class="example-full-width">
-              <mat-label>moneda</mat-label>
+              <mat-label class="letraSize">Moneda</mat-label>
               <mat-select [(value)]="moneda">
                 <mat-option value="1">Pesos</mat-option>
                 <mat-option value="2">Dólares</mat-option>
@@ -217,7 +220,7 @@
         <div class="row">
           <div class="col-lg-4">
             <mat-form-field class="example-full-width">
-              <mat-label>Varias Disposición</mat-label>
+              <mat-label class="letraSize">Varias disposición</mat-label>
               <mat-select [(value)]="dispo">
                 <mat-option value="1">Variacias disposición</mat-option>
                 <!--<mat-option value="2">2</mat-option>
@@ -234,7 +237,7 @@
         <div class="row">
           <div class="col-lg-4">
             <mat-form-field class="example-full-width">
-              <mat-label>Plazo del Contrato</mat-label>
+              <mat-label class="letraSize">Plazo del Contrato</mat-label>
               <mat-select [(value)]="plazo">
                 <mat-option value="1">12</mat-option>
                 <mat-option value="2">24</mat-option>
@@ -245,13 +248,13 @@
           <div class="col-lg-4">
             <div *ngIf="modalidad==1 || modalidad==2">
               <mat-form-field appearance="fill">
-                <mat-label>Plazo máximo de disposición</mat-label>
+                <mat-label class="letraSize">Plazo máximo de disposición</mat-label>
                 <input [(ngModel)]='tasaMaxi' (blur)="vali120()" max="120" min="1" type="number" matInput>
               </mat-form-field>
             </div>
             <div *ngIf="modalidad==3">
               <mat-form-field appearance="fill">
-                <mat-label>Plazo máximo de disposición</mat-label>
+                <mat-label class="letraSize">Plazo máximo de disposición</mat-label>
                 <input [(ngModel)]='tasaMaxi' (blur)="vali300()" max="300" min="1" type="number" matInput>
               </mat-form-field>
             </div>
@@ -259,13 +262,13 @@
           <div class="col-lg-4">
             <div *ngIf="programa==1 && modalidad==3">
               <mat-form-field appearance="fill">
-                <mat-label>Plazo máximo para disponer</mat-label>
+                <mat-label class="letraSize">Plazo máximo para disponer</mat-label>
                 <input [(ngModel)]='plazaMaxidispo' (blur)="vali90()" min="1" max="90" type="number" matInput>
               </mat-form-field>
             </div>
             <div *ngIf="programa==3 && modalidad==3">
               <mat-form-field appearance="fill">
-                <mat-label>Plazo máximo para disponer</mat-label>
+                <mat-label class="letraSize">Plazo máximo para disponer</mat-label>
                 <input [(ngModel)]='tasaMaxi' (blur)="vali120()" min="1" max="120" type="number" matInput>
               </mat-form-field>
             </div>
@@ -276,7 +279,7 @@
         <div class="row">
           <div class="col-lg-4">
             <mat-form-field class="example-full-width">
-              <mat-label>Forma de pago de capital </mat-label>
+              <mat-label class="letraSize">Forma de pago de capital </mat-label>
               <mat-select [(value)]="forcapital">
                 <mat-option value="1">Mensual</mat-option>
                 <mat-option value="2">A vencimiento </mat-option>
@@ -286,10 +289,11 @@
           <div class="col-lg-4">
             <div *ngIf="forcapital==1">
               <mat-form-field class="example-full-width">
-                <mat-label>Amortizaciones</mat-label>
+                <mat-label class="letraSize">Amortizaciones</mat-label>
                 <mat-select [(value)]="amortizacion">
                   <mat-option value="1">Iguales</mat-option>
                   <mat-option value="2">Creciente</mat-option>
+                  <mat-option value="3">Desiguales</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -300,7 +304,7 @@
         <div class="row">
           <div class="col-lg-4">
             <mat-form-field class="example-full-width">
-              <mat-label>Forma de pago de Intereses</mat-label>
+              <mat-label class="letraSize">Forma de pago de Intereses</mat-label>
               <mat-select [(value)]="pagoInteres">
                 <mat-option value="1">Mensual</mat-option>
                 <mat-option value="2">A vencimiento </mat-option>
@@ -310,7 +314,7 @@
           <div class="col-lg-4">
             <div *ngIf="modalidad==3">
               <mat-form-field class="example-full-width">
-                <mat-label>Capitaliza</mat-label>
+                <mat-label class="letraSize">Capitaliza</mat-label>
                 <mat-select [(value)]="capitaliza">
                   <mat-option value="1">Si</mat-option>
                   <mat-option value="2">No</mat-option>
@@ -324,7 +328,7 @@
         <div class="row">
           <div class="col-lg-4">
             <mat-form-field class="example-full-width">
-              <mat-label>Tasa</mat-label>
+              <mat-label class="letraSize">Tasa</mat-label>
               <mat-select #sel (selectionChange)="modalidadTasa(sel.value)" [(value)]="tasa">
                 <mat-option value="1">Variable</mat-option>
                 <mat-option value="2">Fija</mat-option>
@@ -332,16 +336,28 @@
             </mat-form-field>
             <div *ngIf="tasabase==2">
               <mat-form-field appearance="fill">
-                <mat-label>Margen</mat-label>
-                <input type="number" matInput>
+                <mat-label class="letraSize">Margen</mat-label>
+                <input  step="00.01" [(ngModel)]='margen' (click)="limpiarComociones2()" (keyup)="funcioneRevision2()" type="number" matInput>
               </mat-form-field>
             </div>
+            <div *ngIf="tasabase == 1">
+              <mat-form-field appearance="fill">
+                <mat-label class="letraSize">Tasa moratoria fija</mat-label>
+                <input [(ngModel)]="tasaMorafija" [disabled]="true" #sel1 (blur)="pptos()" type="text" matInput>
+              </mat-form-field>
+            </div>
+            <div *ngIf="tasa == 2">
+              <mat-form-field appearance="fill">
+                <mat-label class="letraSize">Tasa moratoria</mat-label>
+                <input [(ngModel)]="tasaMora" id="tasamora" (click)="limpiar()" #sel1 (blur)="pptos()" type="number" matInput>
+              </mat-form-field>
+            </div>    
           </div>
           <div class="col-lg-4">
             <div *ngIf="tasa==1">
               <div *ngIf="moneda==1">
                 <mat-form-field class="example-full-width">
-                  <mat-label>Tasa Base</mat-label>
+                  <mat-label class="letraSize">Tasa Base</mat-label>
                   <mat-select [(value)]="tasabase">
                     <mat-option value="1">TIIE </mat-option>
                   </mat-select>
@@ -349,36 +365,45 @@
               </div>
               <div *ngIf="moneda==2">
                 <mat-form-field class="example-full-width">
-                  <mat-label>Tasa Base</mat-label>
+                  <mat-label class="letraSize">Tasa Base</mat-label>
                   <mat-select [(value)]="tasabase">
                     <mat-option value="2">LIBOR</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div *ngIf="tasabase!= 0">
-                <mat-form-field appearance="fill">
-                  <mat-label>Tasa moratoria</mat-label>
-                  <input [(ngModel)]="tasaMora" #sel1 (blur)="pptos()" type="text" matInput>
-                </mat-form-field>
-              </div>
             </div>
             <div *ngIf="tasa==2">
               <mat-form-field appearance="fill">
-                <mat-label>Margen</mat-label>
-                <input type="number" matInput>
+                <mat-label class="letraSize">Margen</mat-label>
+                <input  step="00.01" [(ngModel)]='margen' (click)="limpiarComociones2()" (keyup)="funcioneRevision2()" type="number" matInput>
               </mat-form-field>
             </div>
+            
+            <div *ngIf="tasabase == 1 && tasa== 1">
+              <mat-form-field appearance="fill">
+                <mat-label class="letraSize">Tasa moratoria</mat-label>
+                <input [(ngModel)]="tasaMora" id="tasamora" (click)="limpiar()" #sel1 (blur)="pptos()" type="number" matInput>
+              </mat-form-field>
+            </div>  
+            <div *ngIf="tasabase == 2 && tasa== 1">
+              <mat-form-field appearance="fill">
+                <mat-label class="letraSize">Tasa moratoria fija</mat-label>
+                <input [(ngModel)]="tasaMorafija" [disabled]="true" #sel1 (blur)="pptos()" type="text" matInput>
+              </mat-form-field>
+            </div>  
+
           </div>
+
           <div class="col-lg-4">
             <div *ngIf="tasa == 2">
               <mat-form-field appearance="fill">
-                <mat-label>Tasa moratoria</mat-label>
-                <input [(ngModel)]="tasaMora" #sel1 (blur)="pptos()" type="text" matInput>
+                <mat-label class="letraSize">Tasa moratoria fija</mat-label>
+                <input [(ngModel)]="tasaMorafija" [disabled]="true" #sel1 (blur)="pptos()" type="text" matInput>
               </mat-form-field>
             </div>
             <div *ngIf="tasabase==2">
               <mat-form-field class="example-full-width">
-                <mat-label>LIBOR</mat-label>
+                <mat-label class="letraSize">LIBOR</mat-label>
                 <mat-select [(value)]="libor">
                   <mat-option value="1">30</mat-option>
                   <mat-option value="2">60</mat-option>
@@ -388,23 +413,31 @@
             </div>
             <div *ngIf="tasabase==1">
               <mat-form-field appearance="fill">
-                <mat-label>Margen</mat-label>
-                <input type="number" matInput>
+                <mat-label class="letraSize">Margen</mat-label>
+                <input  step="00.01" [(ngModel)]='margen' (click)="limpiarComociones2()" (keyup)="funcioneRevision2()" type="number" matInput>
+              </mat-form-field>
+            </div>
+            <div  *ngIf="tasabase == 2 && tasa== 1">
+              <mat-form-field appearance="fill">
+                <mat-label class="letraSize">Tasa moratoria</mat-label>
+                <input [(ngModel)]="tasaMora" id="tasamora" (click)="limpiar()" #sel1 (blur)="pptos()" type="number" matInput>
               </mat-form-field>
             </div>
           </div>
+
         </div>
 
         <h4>Comisiones</h4>
         <div class="row">
           <div class="col-lg-4">
             <mat-form-field class="example-full-width">
-              <mat-label>Comision</mat-label>
+              <mat-label class="letraSize">Comision</mat-label>
               <mat-select [(value)]="comision">
                 <mat-option value="Apertura">Apertura </mat-option>
                 <mat-option value="Disposición">Disposición </mat-option>
                 <mat-option value="Aniversario">Aniversario </mat-option>
                 <mat-option value="Administración">Administración </mat-option>
+                <mat-option value="Estructuración">Estructuración </mat-option>
               </mat-select>
             </mat-form-field>
             <table>
@@ -420,8 +453,8 @@
           </div>
           <div class="col-lg-4">
             <mat-form-field appearance="fill">
-              <mat-label>% Comision</mat-label>
-              <input [(ngModel)]='porComision' type="number" matInput>
+              <mat-label class="letraSize">% Comision</mat-label>
+              <input [(ngModel)]='porComision' type="number" (click)="limpiarComociones()" (keyup)="funcioneRevision()" matInput >
             </mat-form-field>
           </div>
           <div class="col-lg-4">
@@ -432,10 +465,15 @@
         <h4>Otras Condiciones</h4>
         <div class="row">
           <div class="col-lg-4">
+              <mat-form-field appearance="fill">
+                <mat-label class="letraSize">Fuente de Fondeo </mat-label>
+                <input value="Recursos Propios" [disabled]="true" #sel1 (blur)="pptos()" type="text" matInput>
+              </mat-form-field>
+          </div>
+          <div class="col-lg-4">
             <mat-form-field class="example-full-width">
-              <mat-label>Fuente de Fondeo </mat-label>
+              <mat-label class="letraSize">Fuente de Fondeo </mat-label>
               <mat-select [(value)]="fondeo">
-                <mat-option value="1">Recursos propios </mat-option>
                 <mat-option value="2">NAFIN </mat-option>
                 <mat-option value="3">FEGA </mat-option>
                 <mat-option value="4">BANCOMEXT </mat-option>
@@ -443,15 +481,14 @@
             </mat-form-field>
           </div>
           <div class="col-lg-4"></div>
-          <div class="col-lg-4"></div>
         </div>
       </div><!-- new -->
-    </div><!-- new -->
-  </div>
+    <!-- </div>
+  </div> -->
   <!--- No borrar fin -->
 
 
-  <div class="col-lg-6">
+  <!-- <div class="col-lg-6">
     <h4>Tipo de producto T24</h4>
 
     <div *ngIf="modalidad==1 && (Destino==1 ||  Destino==2 ||  Destino==3)  && fondeo==1">
@@ -476,7 +513,7 @@
     </div>
 
 
-  </div>
+  </div> -->
 
-
+  <div class="col-lg-1"></div><!-- NUevo fin-->
 </div>

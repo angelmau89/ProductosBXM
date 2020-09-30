@@ -1,11 +1,45 @@
-<h1>Lista Productos</h1>
-<ul>
-    <li [routerLink]="['Credito_Cuneta_Corriente']">Crédito Cuenta Corriente.</li>
-    <li [routerLink]="['Credito_Simple']">Crédito Simple.</li>
-    <li [routerLink]="['Factoraje']">Factoraje.</li>
-    <li [routerLink]="['Prendario']">Prendario.</li>
-    <li [routerLink]="['Arrendamiento']">Arrendamiento.</li>
-    <li [routerLink]="['Contigencia']">Contingentes.</li>
-    <li [routerLink]="['Reconocimiento_Adeudo']">Reconocimiento de adeudo.</li>
-</ul>
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <h1>Lista Productos BX+</h1>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 center">
+                <button mat-button class="boton-verpormas-producto" [routerLink]="['Credito_Cuneta_Corriente']">Crédito Cuenta Corriente.</button>
+            </div>
+            <div class="col-lg-3 center">
+                <button mat-button class="boton-verpormas-producto" [routerLink]="['Credito_Simple']">Crédito Simple.</button>
+            </div>
+            <div class="col-lg-3 center">
+                <button mat-button class="boton-verpormas-producto" [routerLink]="['Factoraje']">Factoraje.</button>
+            </div>
+            <div class="col-lg-3 center">
+                <button mat-button class="boton-verpormas-producto" [routerLink]="['Prendario']">Prendario.</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 center">
+                <button mat-button class="boton-verpormas-producto" [routerLink]="['Arrendamiento']">Arrendamiento.</button>
+            </div>
+            <div class="col-lg-3 center">
+                <button mat-button class="boton-verpormas-producto" [routerLink]="['Contigencia']">Contingentes.</button>
+            </div>
+            <div class="col-lg-3 center">
+                <button mat-button class="boton-verpormas-producto" [routerLink]="['Reconocimiento_Adeudo']">Reconocimiento de adeudo.</button>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+
+    <!-- <button [routerLink]="['Credito_Cuneta_Corriente']">Crédito Cuenta Corriente.</button>
+    <button [routerLink]="['Credito_Simple']">Crédito Simple.</button>
+    <button [routerLink]="['Factoraje']">Factoraje.</button>
+    <button [routerLink]="['Prendario']">Prendario.</button>
+    <button [routerLink]="['Arrendamiento']">Arrendamiento.</button>
+    <button [routerLink]="['Contigencia']">Contingentes.</button>
+    <button [routerLink]="['Reconocimiento_Adeudo']">Reconocimiento de adeudo.</button> -->
+
 <router-outlet></router-outlet>
