@@ -44,7 +44,7 @@ table {
     margin-bottom: 3%;
 }
 span.mat-button-wrapper {
-    font-size: 20px;
+    font-size: 15px;
 }
 .estatusLinea{
     border-radius: 52px 52px 52px 52px!important;
@@ -65,25 +65,10 @@ span.mat-button-wrapper {
     margin-right: 6%;
 }
 .labelNegro{
-    color: black;
-    font-weight: 900;
+    font-weight: 900!important;
+    color: black!important;
 }
-input#mat-input-1 {
-    font-weight: 900;
-    color: black;
-}
-input#mat-input-4 {
-    font-weight: 900;
-    color: black;
-}
-input#mat-input-3 {
-    font-weight: 900;
-    color: black;
-}
-input#mat-input-5 {
-    font-weight: 900;
-    color: black;
-}
+
 .tablefondeo{
     width: 33%!important;
 }
@@ -91,4 +76,10 @@ input#mat-input-5 {
     float: right;
     margin-top: 4%;
     margin-right: 3%;
+}
+.widthPLazo{
+    width: 80%!important;
+}
+.mat-form-field{
+    width: 90%;
 }

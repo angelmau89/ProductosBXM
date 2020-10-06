@@ -31,6 +31,10 @@ export class CreditoSimpleComponent implements OnInit {
   tasabase;
   fondeo;
   Capitaliza;
+  margen;
+  aux2=0;
+  aux=0;
+  formaPago;
 
   constructor() { }
 
@@ -86,6 +90,59 @@ export class CreditoSimpleComponent implements OnInit {
       alert("Comision Agregada")
     }
 
+  }
+
+  funcioneRevision2(){
+  
+
+    if(this.margen<=99.99)
+    { 
+     
+      console.log((this.margen+'').length);
+  
+      if((this.margen+'').length<=5){
+        this.aux2=this.margen;
+      }else{
+        this.margen=this.aux2;
+      }
+      
+    }
+    else{
+     this.margen=this.aux2;
+    }
+    
+  }
+
+  limpiarComociones2(){
+    this.margen=null;
+  }
+  limpiarComociones(){
+    this.porComision=null;
+  }
+
+  funcioneRevision(){
+  
+
+    if(this.porComision<=99.99)
+    { 
+     
+      console.log((this.porComision+'').length);
+  
+      if((this.porComision+'').length<=5){
+        this.aux=this.porComision;
+      }else{
+        this.porComision=this.aux;
+      }
+      
+    }
+    else{
+     this.porComision=this.aux;
+    }
+    
+  }
+
+  plazoSinContrato(){
+    this.plazContra
   }
 
 }

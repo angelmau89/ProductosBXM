@@ -165,9 +165,12 @@
               <br>
               <br>
               <mat-form-field appearance="fill">
-                <mat-label class="letraSize">% Archivo</mat-label>
+                <mat-label class="letraSize">Archivo</mat-label>
                 <input [(ngModel)]='porfile' type="number" matInput>
               </mat-form-field>
+              <div class="typElement">
+                <p>%</p>
+              </div>
             </div>
           </div>
           <div class="col-lg-4">
@@ -241,7 +244,7 @@
         <h4>Plazos</h4>
         <div class="row">
           <div class="col-lg-4">
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="example-full-width widthPLazo">
               <mat-label class="letraSize">Plazo del Contrato</mat-label>
               <mat-select [(value)]="plazo">
                 <mat-option value="1">12</mat-option>
@@ -249,6 +252,9 @@
                 <mat-option value="3">36</mat-option>
               </mat-select>
             </mat-form-field>
+            <div class="typElement">
+              <p>Meses</p>
+            </div>
           </div>
           <div class="col-lg-4">
             <div *ngIf="modalidad==1 || modalidad==2">
@@ -283,7 +289,7 @@
             <div *ngIf="programa==3 && modalidad==3">
               <mat-form-field appearance="fill">
                 <mat-label class="letraSize">Plazo máximo para disponer</mat-label>
-                <input [(ngModel)]='tasaMaxi' (blur)="vali120()" min="1" max="120" type="number" matInput>
+                <input [(ngModel)]='tasaMaxi2' (blur)="vali1202()" min="1" max="120" type="number" matInput>
               </mat-form-field>
               <div class="typElementDay">
                 <p>Días</p>
@@ -360,12 +366,12 @@
                 <p>PP</p>
               </div>
             </div>
-            <!-- <div *ngIf="tasabase == 1">
+            <div *ngIf="tasabase == 1">
               <mat-form-field appearance="fill">
-                <mat-label class="letraSize labelNegro">Tasa moratoria fija</mat-label>
+                <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
                 <input [(ngModel)]="tasaMorafija" class="labelNegro" [disabled]="true" #sel1 (blur)="pptos()" type="text" matInput>
               </mat-form-field>
-            </div> -->
+            </div>
             <!-- <div *ngIf="tasa == 2">
               <mat-form-field appearance="fill">
                 <mat-label class="letraSize">Tasa moratoria</mat-label>
@@ -411,7 +417,7 @@
             <div *ngIf="tasabase == 2 && tasa== 1">
               <mat-form-field appearance="fill">
                 <mat-label class="letraSize labelNegro" >Tasa moratoria</mat-label>
-                <input [(ngModel)]="tasaMorafija" [disabled]="true" #sel1 (blur)="pptos()" type="text" matInput>
+                <input class="labelNegro" [(ngModel)]="tasaMorafija" [disabled]="true" #sel1 (blur)="pptos()" type="text" matInput>
               </mat-form-field>
             </div>  
 
@@ -421,7 +427,7 @@
             <div *ngIf="tasa == 2">
               <mat-form-field appearance="fill">
                 <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
-                <input [(ngModel)]="tasaMorafija" [disabled]="true" #sel1 (blur)="pptos()" type="text" matInput>
+                <input class="labelNegro" [(ngModel)]="tasaMorafija" [disabled]="true" #sel1 (blur)="pptos()" type="text" matInput>
               </mat-form-field>
             </div>
             <div *ngIf="tasabase==2">

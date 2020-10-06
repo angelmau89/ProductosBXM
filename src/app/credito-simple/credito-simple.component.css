@@ -4,3 +4,14 @@
 .tamInput{
     font-size: 20px;
 }
+.mat-form-field{
+    width: 90%;
+}
+.tamInput2{
+    width: 80%;
+}
+.typElementMa{
+    float: right;
+    margin-top: 4%;
+    margin-right: 4%;
+}

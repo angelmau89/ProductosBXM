@@ -47,6 +47,7 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
   aux=0;
   aux2=0;
   margen;
+  tasaMaxi2;
   
 
   constructor() { }
@@ -87,6 +88,18 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     if(this.tasaMaxi<0){
       alert("El valor es máximo es de 1 días")
       this.tasaMaxi=0;
+    }
+  }
+
+  vali1202(){
+    if(this.tasaMaxi2>120)
+    {
+      alert("El valor es máximo es de 120 días")
+      this.tasaMaxi=0;
+    }
+    if(this.tasaMaxi2<0){
+      alert("El valor es máximo es de 1 días")
+      this.tasaMaxi2=0;
     }
   }
   
@@ -218,6 +231,7 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
   limpiarComociones(){
     this.porComision=null;
   }
+  
   limpiarComociones2(item){
     this.margen=null;
   }

@@ -35,7 +35,12 @@ export class PrendarioComponent implements OnInit {
   pagointres;
   Tasa;
   tasabase;
-
+  tasaMorafija="T.O X 2 PP";
+  modalidadTasa;
+  tasa;
+  margen;
+  aux=0;
+  aux2=0;
 
   constructor() { }
   ngOnInit() {
@@ -107,5 +112,56 @@ export class PrendarioComponent implements OnInit {
   Limpia(){
     this.llamaAforo="";
   }
+
+  limpiarComociones(){
+    this.porComision=null;
+  }
+  
+  limpiarComociones2(){
+    this.margen=null;
+  }
+
+  funcioneRevision(){
+  
+
+    if(this.porComision<=99.99)
+    { 
+     
+      console.log((this.porComision+'').length);
+  
+      if((this.porComision+'').length<=5){
+        this.aux=this.porComision;
+      }else{
+        this.porComision=this.aux;
+      }
+      
+    }
+    else{
+     this.porComision=this.aux;
+    }
+    
+  }
+
+  funcioneRevision2(){
+  
+
+    if(this.margen<=99.99)
+    { 
+     
+      console.log((this.margen+'').length);
+  
+      if((this.margen+'').length<=5){
+        this.aux2=this.margen;
+      }else{
+        this.margen=this.aux2;
+      }
+      
+    }
+    else{
+     this.margen=this.aux2;
+    }
+    
+  }
+
 
 }
