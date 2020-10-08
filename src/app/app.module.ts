@@ -13,6 +13,9 @@ import { PrendarioComponent } from './prendario/prendario.component';
 import { ArrendamientoComponent } from './arrendamiento/arrendamiento.component';
 import { ContigenciaComponent } from './contigencia/contigencia.component';
 import { ReconocimientoAdeudoComponent } from './reconocimiento-adeudo/reconocimiento-adeudo.component';
+import { GarantiaLiquidaComponent } from './garantia-liquida/garantia-liquida.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatDatepickerModule,MatNativeDateModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,9 +26,13 @@ import { ReconocimientoAdeudoComponent } from './reconocimiento-adeudo/reconocim
     PrendarioComponent,
     ArrendamientoComponent,
     ContigenciaComponent,
-    ReconocimientoAdeudoComponent
+    ReconocimientoAdeudoComponent,
+    GarantiaLiquidaComponent
   ],
   imports: [
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatExpansionModule,
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,

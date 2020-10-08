@@ -7,6 +7,7 @@ import { PrendarioComponent } from './prendario/prendario.component';
 import { ArrendamientoComponent } from './arrendamiento/arrendamiento.component';
 import { ContigenciaComponent } from './contigencia/contigencia.component';
 import { ReconocimientoAdeudoComponent } from './reconocimiento-adeudo/reconocimiento-adeudo.component';
+import { GarantiaLiquidaComponent } from './garantia-liquida/garantia-liquida.component';
 
 const routes: Routes = [
     //{ path: '', component: AppComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'Arrendamiento', component: ArrendamientoComponent},
     { path: 'Contigencia', component: ContigenciaComponent},
     { path: 'Reconocimiento_Adeudo', component: ReconocimientoAdeudoComponent},
+    { path: 'Garantias', component: GarantiaLiquidaComponent},
     
 ];
 
