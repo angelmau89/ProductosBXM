@@ -7,15 +7,68 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GarantiaLiquidaComponent implements OnInit {
 
-  panelOpenState = false; 
+  panelOpenState = false;
+  panelOpenState1 = false;  
   panelOpenState2 = false; 
+  panelOpenState3 = false; 
   tipoGarantia;
   subTipoGarantia;
   subSubTipoGarantia;
   programa;
+  aforo;
+  aux2;
   constructor() { }
 
+
+  funcioneRevision(){
+  
+
+    if(this.aforo<=99.99)
+    { 
+     
+      console.log((this.aforo+'').length);
+  
+      if((this.aforo+'').length<=5){
+        this.aux2=this.aforo;
+      }else{
+        this.aforo=this.aux2;
+      }
+      
+    }
+    else{
+     this.aforo=this.aux2;
+    }
+    
+  }
+
+  limpiarComociones(){
+    this.aforo=null;
+  }
+
   ngOnInit() {
+  }
+
+  modalidadCambio(){
+  
+    this.panelOpenState = true;
+    this.panelOpenState1 = true;  
+    this.panelOpenState2 = true; 
+    this.panelOpenState3 = true; 
+
+  }
+  modalidadCambio2(){
+    this.panelOpenState = false;
+    this.panelOpenState1 = false;  
+    this.panelOpenState2 = false; 
+    this.panelOpenState3 = false; 
+
+  }
+  modalidadCambio3(){
+    this.panelOpenState = false;
+    this.panelOpenState1 = false;  
+    this.panelOpenState2 = false; 
+    this.panelOpenState3 = false; 
+
   }
 
   tipoGarantiaJSON=[ 
