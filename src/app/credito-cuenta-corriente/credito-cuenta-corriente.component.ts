@@ -43,11 +43,16 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
   tasa;
   fondeo;
   capitaliza
-  tasaMorafija="T.O X 2 PP";
+  tasaMorafija="T.O X 2";
   aux=0;
   aux2=0;
   margen;
   tasaMaxi2;
+  plazoMniDisponer;
+  plazoMaxiDispo;
+  aforo;
+  Destino_Avio;
+  Destino_Comer;
   
 
   constructor() { }
@@ -57,7 +62,6 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
 
   
   modalidadCambio(value) {
-    console.log(value)
     this.programa = 0;
     this.Destino = 0;
   }
@@ -78,16 +82,27 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     }
   }
 
+  vali30(){
+    if(this.plazoMniDisponer>30)
+    {
+      alert("El valor es máximo es de 30 días")
+      this.plazoMniDisponer="";
+    }
+    if(this.plazoMniDisponer<0){
+      alert("El valor es máximo es de 1 días")
+      this.plazoMniDisponer="";
+    }
+  }
 
   vali120(){
     if(this.tasaMaxi>120)
     {
       alert("El valor es máximo es de 120 días")
-      this.tasaMaxi=0;
+      this.tasaMaxi="";
     }
     if(this.tasaMaxi<0){
       alert("El valor es máximo es de 1 días")
-      this.tasaMaxi=0;
+      this.tasaMaxi="";
     }
   }
 
@@ -95,11 +110,11 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     if(this.tasaMaxi2>120)
     {
       alert("El valor es máximo es de 120 días")
-      this.tasaMaxi=0;
+      this.tasaMaxi="";
     }
     if(this.tasaMaxi2<0){
       alert("El valor es máximo es de 1 días")
-      this.tasaMaxi2=0;
+      this.tasaMaxi2="";
     }
   }
   
@@ -107,11 +122,11 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     if(this.plazaMaxidispo>90)
     {
       alert("El valor es máximo es de 90 días")
-      this.plazaMaxidispo=0;
+      this.plazaMaxidispo="";
     }
     if(this.plazaMaxidispo<0){
       alert("El valor es máximo es de 1 días")
-      this.plazaMaxidispo=0;
+      this.plazaMaxidispo="";
     }
   }
 
@@ -119,11 +134,11 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     if(this.tasaMaxi>300)
     {
       alert("El valor es máximo es de 300 días")
-      this.tasaMaxi=0;
+      this.tasaMaxi="";
     }
     if(this.tasaMaxi<0){
       alert("El valor es máximo es de 1 días")
-      this.tasaMaxi=0;
+      this.tasaMaxi="";
     }
   }
 
@@ -189,7 +204,7 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
   funcioneRevision(){
   
 
-    if(this.porComision<=99.99)
+    if(this.porComision<=1.59)
     { 
      
       console.log((this.porComision+'').length);
@@ -202,7 +217,7 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
       
     }
     else{
-     this.porComision=this.aux;
+     this.porComision=1.01;
     }
     
   }
@@ -210,7 +225,7 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
   funcioneRevision2(){
   
 
-    if(this.margen<=99.99)
+    if(this.margen<=1.99)
     { 
      
       console.log((this.margen+'').length);
@@ -223,17 +238,63 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
       
     }
     else{
-     this.margen=this.aux2;
+     this.margen=1.01;
     }
     
   }
 
   limpiarComociones(){
-    this.porComision=null;
+    this.porComision=1.01;
   }
   
-  limpiarComociones2(item){
-    this.margen=null;
+  limpiarElemento(){
+    this.plazoMniDisponer="";
+  }
+
+  limpiarElemento2(){
+    this.plazoMaxiDispo="";
+  }
+
+  vali120PlazoMaxDispo(){
+    if(this.plazoMaxiDispo>120)
+    {
+      alert("El valor es máximo es de 120 días")
+      this.plazoMaxiDispo="";
+    }
+    if(this.plazoMaxiDispo<0){
+      alert("El valor es máximo es de 1 días")
+      this.plazoMaxiDispo="";
+    }
+  }
+
+  limpiarmargen(){
+    this.margen=1.01;
+  }
+
+  funcioneRevision80(){
+  
+    if(this.aforo<=80)
+    { 
+     
+      console.log((this.aforo+'').length);
+  
+      if((this.aforo+'').length<=5){
+        this.aux=this.aforo;
+      }else{
+        this.aforo=this.aux;
+      }
+      
+    }
+    else{
+     this.aforo="";
+     alert("Aforo no mayor a 80%");
+    }
+    
+  }
+
+
+  limpiarAforo(){
+    this.aforo="";
   }
 
 }

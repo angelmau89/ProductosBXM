@@ -41,7 +41,7 @@
                 <mat-label class="letraSize">Tipo de programa</mat-label>
                 <mat-select [(value)]="programa">
                   <mat-option value="1">Profertil</mat-option>
-                  <mat-option value="2">Avío</mat-option>
+                  <mat-option value="2">Financiamiento</mat-option>
                   <mat-option value="3">Comercialización</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -51,9 +51,20 @@
               <br>
               <br>
               <mat-form-field class="example-full-width">
-                <mat-label class="letraSize">Destino</mat-label>
+                <mat-label class="letraSize">Comercialización</mat-label>
                 <mat-select [(value)]="Destino_Profertil">
-                  <mat-option value="1">Compra de insumos y semillas</mat-option>
+                  <mat-option value="1">Comercialización </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="programa==3 && modalidad==3">
+              <br>
+              <br>
+              <mat-form-field class="example-full-width">
+                <mat-label class="letraSize">Comercialización</mat-label>
+                <mat-select [(value)]="Destino_Comer">
+                  <mat-option value="1">Comercialización </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -77,12 +88,28 @@
                 <br>
                 <mat-label class="letraSize">Tipo de programa</mat-label>
                 <mat-select [(value)]="Destino_Avio">
-                  <mat-option value="1">Financiamiento</mat-option>
+                  <mat-option value="1">Establecimiento</mat-option>
+                  <mat-option value="2">Mantenimiento y cosecha</mat-option>
+                  <mat-option value="3">(Catalogo)</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
 
-            <div *ngIf="programa==2 && Destino_Profertil==1 ">
+            <div *ngIf="((programa==2 && modalidad==3 && (Destino_Avio==1 || Destino_Avio==2)) || (Destino_Comer==1 && programa==3) )">
+              <br>
+              <br>
+              
+              <mat-form-field appearance="fill">
+                <mat-label class="letraSize">Aforo</mat-label>
+                <input  [(ngModel)]="aforo" (click)="limpiarAforo()"  (keyup)="funcioneRevision80()" type="number" matInput>
+              </mat-form-field>
+              
+              <div class="typElement">
+                <p>%</p>
+              </div>
+            </div>
+
+            <div *ngIf="modalidad==3 && (programa==2 || programa==3)">
               <br>
               <br>
               <mat-form-field class="example-full-width">
@@ -93,7 +120,7 @@
               </mat-form-field>
             </div>
 
-            <div *ngIf="programa==2 && Destino_Profertil==1 ">
+            <div  *ngIf="modalidad==3 && (programa==2 || programa==3)">
               <br>
               <br>
               <mat-form-field appearance="fill">
@@ -116,7 +143,8 @@
               </mat-form-field>
             </div>
 
-            <div *ngIf="Destino==2">
+            <!-- El limanado 12/10/2020 -->
+            <!-- <div *ngIf="Destino==2">
               <br>
               <br>
               
@@ -128,9 +156,9 @@
               <div class="typElement">
                 <p>%</p>
               </div>
-            </div>
+            </div> -->
 
-            <div *ngIf="Destino==3">
+            <div *ngIf="Destino==3 && modalidad==1">
               <br>
               <br>
               <mat-form-field appearance="fill">
@@ -153,7 +181,7 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <div *ngIf="Destino==3">
+            <div *ngIf="Destino==3 && modalidad==1">
               <br>
               <br>
               <br>
@@ -174,7 +202,7 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <div *ngIf="Destino==3">
+            <div *ngIf="Destino==3 && modalidad==1">
               <br>
               <br>
               <br>
@@ -260,7 +288,7 @@
             <div *ngIf="modalidad==1 || modalidad==2">
               <mat-form-field appearance="fill">
                 <mat-label class="letraSize">Plazo máximo de disposición</mat-label>
-                <input [(ngModel)]='tasaMaxi' (blur)="vali120()" max="120" min="1" type="number" matInput>
+                <input [(ngModel)]='plazoMaxiDispo'  (click)="limpiarElemento2()" (blur)="vali120PlazoMaxDispo()" max="120" min="1" type="number" matInput>
               </mat-form-field>
               <div class="typElementDay">
                 <p>Días</p>
@@ -290,6 +318,16 @@
               <mat-form-field appearance="fill">
                 <mat-label class="letraSize">Plazo máximo para disponer</mat-label>
                 <input [(ngModel)]='tasaMaxi2' (blur)="vali1202()" min="1" max="120" type="number" matInput>
+              </mat-form-field>
+              <div class="typElementDay">
+                <p>Días</p>
+              </div>
+            </div>
+            <!-- 12/10/2020 -->
+            <div *ngIf="modalidad==1 || modalidad==2">
+              <mat-form-field appearance="fill">
+                <mat-label class="letraSize">plazo mínimo de disposición</mat-label>
+                <input [(ngModel)]='plazoMniDisponer'  (click)="limpiarElemento()" (blur)="vali30()" min="1" max="120" type="number" matInput>
               </mat-form-field>
               <div class="typElementDay">
                 <p>Días</p>
@@ -330,7 +368,7 @@
               <mat-label class="letraSize">Forma de pago de Intereses</mat-label>
               <mat-select [(value)]="pagoInteres">
                 <mat-option value="1">Mensual</mat-option>
-                <mat-option value="2">A vencimiento </mat-option>
+                <mat-option value="2" *ngIf="modalidad==3">A vencimiento </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -360,11 +398,12 @@
             <div *ngIf="tasabase==2">
               <mat-form-field appearance="fill">
                 <mat-label class="letraSize">Margen</mat-label>
-                <input  step="00.01" [(ngModel)]='margen' (click)="limpiarComociones2()" (keyup)="funcioneRevision2()" type="number" matInput>
+                <input  step="00.01" [(ngModel)]='margen'(click)="limpiarmargen()"  (keyup)="funcioneRevision2()" type="number" matInput>
               </mat-form-field>
               <div class="typElement">
                 <p>PP</p>
               </div>
+              <p>Formato 1.XX PP</p>
             </div>
             <div *ngIf="tasabase == 1">
               <mat-form-field appearance="fill">
@@ -401,11 +440,12 @@
             <div *ngIf="tasa==2">
               <mat-form-field appearance="fill">
                 <mat-label class="letraSize">Margen</mat-label>
-                <input  step="00.01" [(ngModel)]='margen' (click)="limpiarComociones2()" (keyup)="funcioneRevision2()" type="number" matInput>
+                <input  step="00.01" [(ngModel)]='margen' (click)="limpiarmargen()" (keyup)="funcioneRevision2()" type="number" matInput>
               </mat-form-field>
               <div class="typElement">
                 <p>PP</p>
               </div>
+              <p>Formato 1.XX PP</p>
             </div>
             
             <!-- <div *ngIf="tasabase == 1 && tasa== 1">
@@ -443,11 +483,12 @@
             <div *ngIf="tasabase==1">
               <mat-form-field appearance="fill">
                 <mat-label class="letraSize">Margen</mat-label>
-                <input  step="00.01" [(ngModel)]='margen' (click)="limpiarComociones2()" (keyup)="funcioneRevision2()" type="number" matInput>
+                <input  step="00.01" [(ngModel)]='margen' (click)="limpiarmargen()" (keyup)="funcioneRevision2()" type="number" matInput>
               </mat-form-field>
               <div class="typElement">
                 <p>PP</p>
               </div>
+              <p>Formato 1.XX PP</p>
             </div>
             <!-- <div  *ngIf="tasabase == 2 && tasa== 1">
               <mat-form-field appearance="fill">
