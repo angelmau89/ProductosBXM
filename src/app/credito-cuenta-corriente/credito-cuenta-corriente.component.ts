@@ -28,7 +28,7 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
   lista: struccomision[] = [];
   listaFile: strucFile[] = [];
   comision;
-  porComision;
+  porComision=1.01;
   archivo:string;
   porfile;
   tasaMora="";
@@ -44,16 +44,21 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
   fondeo;
   capitaliza
   tasaMorafija="T.O X 2";
+  tasaMorafija2="T.O X 2";
   aux=0;
   aux2=0;
-  margen;
+  margen=1.01;
   tasaMaxi2;
   plazoMniDisponer;
   plazoMaxiDispo;
   aforo;
   Destino_Avio;
   Destino_Comer;
-  
+  margen2=1.01;
+  newTasa=false;
+  tasabase2;
+  libor2;
+  tasa2;
 
   constructor() { }
 
@@ -66,8 +71,26 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     this.Destino = 0;
   }
   modalidadTasa(value) {
-    this.tasabase = 0;
-    this.libor = 0;
+    if(this.tasa==this.tasa2){
+      alert("No se puede seleccionar la misma tasa dos veces.");
+      this.tasa="";
+      this.tasabase = 0;
+      this.libor = 0;
+      }else{
+        this.tasabase = 0;
+        this.libor = 0;
+      }
+  }
+  modalidadTasa2(value) {
+    if(this.tasa==this.tasa2){
+    alert("No se puede seleccionar la misma tasa dos veces.");
+    this.tasa2="";
+    this.tasabase2 = 0;
+    this.libor2 = 0;
+    }else{
+      this.tasabase2 = 0;
+      this.libor2 = 0;
+    }
   }
 
 
@@ -243,6 +266,27 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     
   }
 
+  funcioneRevision22(){
+  
+
+    if(this.margen2<=1.99)
+    { 
+     
+      console.log((this.margen2+'').length);
+  
+      if((this.margen2+'').length<=5){
+        this.aux2=this.margen2;
+      }else{
+        this.margen2=this.aux2;
+      }
+      
+    }
+    else{
+     this.margen2=1.01;
+    }
+    
+  }
+
   limpiarComociones(){
     this.porComision=1.01;
   }
@@ -256,19 +300,36 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
   }
 
   vali120PlazoMaxDispo(){
-    if(this.plazoMaxiDispo>120)
+    if(this.plazoMaxiDispo>=120)
     {
       alert("El valor es máximo es de 120 días")
       this.plazoMaxiDispo="";
+    }else{
+      if(this.plazoMaxiDispo<30){
+        alert("El valor es mínimo es de 30 días")
+        this.plazoMaxiDispo="";
+      }
     }
-    if(this.plazoMaxiDispo<0){
-      alert("El valor es máximo es de 1 días")
+  }
+
+  vali120PlazoMaxDispoMni1(){
+    if(this.plazoMaxiDispo>=120)
+    {
+      alert("El valor es máximo es de 120 días")
       this.plazoMaxiDispo="";
+    }else{
+      if(this.plazoMaxiDispo<1){
+        alert("El valor es mínimo es de 1 días")
+        this.plazoMaxiDispo="";
+      }
     }
   }
 
   limpiarmargen(){
     this.margen=1.01;
+  }
+  limpiarmargen2(){
+    this.margen2=1.01;
   }
 
   funcioneRevision80(){
@@ -287,7 +348,7 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     }
     else{
      this.aforo="";
-     alert("Aforo no mayor a 80%");
+     alert("Aforo mayor a 80%");
     }
     
   }

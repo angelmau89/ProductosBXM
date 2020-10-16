@@ -28,12 +28,20 @@ export class FactorajeComponent implements OnInit {
   fromaCapital;
   Tasa;
   tasabase;
-  tasaMorafija="T.O X 2 PP";
   aux=0;
   aux2=0;
-  margen;
+  margen=1.01;
   tasa;
   modalidadTasa;
+  aforo=80;
+  plazomin;
+  margen2=1.01;
+  tasa2;
+  tasabase2;
+  libor;
+  libor2;
+  tasaMorafija="T.O X 2";
+  tasaMorafija2="T.O X 2";
 
   constructor() { }
 
@@ -95,7 +103,7 @@ export class FactorajeComponent implements OnInit {
   funcioneRevision(){
   
 
-    if(this.porComision<=99.99)
+    if(this.porComision<=1.59)
     { 
      
       console.log((this.porComision+'').length);
@@ -108,7 +116,71 @@ export class FactorajeComponent implements OnInit {
       
     }
     else{
-     this.porComision=this.aux;
+     this.porComision=1.01;
+    }
+    
+  }
+
+  
+
+  limpiarComociones(){
+    this.porComision=null;
+  }
+  
+  limpiarComociones2(item){
+    this.margen=null;
+  }
+
+  funcionAforo(){
+  //alert(this.aforo);
+    if(this.aforo<=100 && this.aforo>80)
+    { 
+     
+      console.log((this.aforo+'').length);
+  
+      if((this.aforo+'').length<=5){
+        this.aux2=this.aforo;
+      }else{
+        this.aforo=this.aux2;
+      }
+      
+    }
+    else{
+     this.aforo=80;
+    }
+    
+  }
+
+  vali30(){
+    if(this.plazomin>=30)
+    {
+      alert("El valor es máximo es de 30 días")
+      this.plazomin="";
+    }else{
+      if(this.plazomin<1){
+        alert("El valor es mínimo es de 1 días")
+        this.plazomin="";
+      }
+    }    
+  }
+
+  funcioneRevision22(){
+  
+
+    if(this.margen2<=1.99)
+    { 
+     
+      console.log((this.margen2+'').length);
+  
+      if((this.margen2+'').length<=5){
+        this.aux2=this.margen2;
+      }else{
+        this.margen2=this.aux2;
+      }
+      
+    }
+    else{
+     this.margen2=1.01;
     }
     
   }
@@ -116,7 +188,7 @@ export class FactorajeComponent implements OnInit {
   funcioneRevision2(){
   
 
-    if(this.margen<=99.99)
+    if(this.margen<=1.99)
     { 
      
       console.log((this.margen+'').length);
@@ -129,17 +201,33 @@ export class FactorajeComponent implements OnInit {
       
     }
     else{
-     this.margen=this.aux2;
+     this.margen=1.01;
     }
     
   }
 
-  limpiarComociones(){
-    this.porComision=null;
+
+  modalidadTasa22(value) {
+    if(this.tasa==this.tasa2){
+      alert("No se puede seleccionar la misma tasa dos veces.");
+      this.tasa="";
+      this.tasabase = 0;
+      this.libor = 0;
+      }else{
+        this.tasabase = 0;
+        this.libor = 0;
+      }
   }
-  
-  limpiarComociones2(item){
-    this.margen=null;
+  modalidadTasa222(value) {
+    if(this.tasa==this.tasa2){
+    alert("No se puede seleccionar la misma tasa dos veces.");
+    this.tasa2="";
+    this.tasabase2 = 0;
+    this.libor2 = 0;
+    }else{
+      this.tasabase2 = 0;
+      this.libor2 = 0;
+    }
   }
 
 }

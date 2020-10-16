@@ -44,7 +44,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Destino</mat-label>
             <mat-select [(value)]="destino">
-              <mat-option value="1">Mercancía o bien depositado </mat-option>
+              <mat-option value="1">Apoyar la  comercialización</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -52,7 +52,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Destino</mat-label>
             <mat-select [(value)]="destino">
-              <mat-option value="1">Valores que cotizan en bolsa </mat-option>
+              <mat-option value="1">Compra de acciones</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -83,7 +83,7 @@
       <div class="col-lg-4">
         <mat-form-field appearance="fill">
           <mat-label>Aforo</mat-label>
-          <input [(ngModel)]='aforo' type="number" matInput>
+          <input max="100" min="80" (keyup)="funcioneRevision80()" [(ngModel)]='aforo' type="number" matInput>
         </mat-form-field>
         <div class="typElement">
           <p>%</p>
@@ -149,12 +149,14 @@
         <mat-form-field class="example-full-width">
           <mat-label>Plazo máximo de disposición</mat-label>
           <mat-select [(value)]="plazoMaxi">
-            <mat-option value="1">90 Días</mat-option>
-            <mat-option value="2">180 Días</mat-option>
-            <mat-option value="3">240 Días</mat-option>
+            <mat-option value="5" *ngIf="modalidad==2" >30 Días</mat-option>
+            <mat-option value="1" *ngIf="modalidad==1">90 Días</mat-option>
+            <mat-option value="2" *ngIf="modalidad==1">180 Días</mat-option>
+            <mat-option value="3" *ngIf="modalidad==1">240 Días</mat-option>
+            <mat-option value="4" *ngIf="modalidad==2" >180 Días</mat-option>
           </mat-select>
         </mat-form-field>
-        <div *ngIf="plazoMaxi==1 || plazoMaxi==2 || plazoMaxi==3">
+        <div *ngIf="(plazoMaxi==1 || plazoMaxi==2 || plazoMaxi==3) && modalidad==1">
           <h6>Sin exceder 10 días antes del vencimiento del CD y BP</h6>
         </div>
       </div>
@@ -206,7 +208,6 @@
           <mat-select [(ngModel)]='armoti'>
             <mat-option value="1">Iguales</mat-option>
             <mat-option value="2">Crecimiento</mat-option>
-            <mat-option value="3">Niveles</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -237,13 +238,12 @@
       <div class="col-lg-4"></div>
     </div>
 
-
     <h4>Tasas</h4>
     <div class="row">
       <div class="col-lg-4">
         <mat-form-field class="example-full-width">
           <mat-label class="letraSize">Tasa</mat-label>
-          <mat-select #sel (selectionChange)="modalidadTasa(sel.value)" [(value)]="tasa">
+          <mat-select #sel (selectionChange)="modalidadTasa1(sel.value)" [(value)]="tasa">
             <mat-option value="1">Variable</mat-option>
             <mat-option value="2">Fija</mat-option>
           </mat-select>
@@ -251,12 +251,13 @@
         <div *ngIf="tasabase==2">
           <mat-form-field appearance="fill">
             <mat-label class="letraSize">Margen</mat-label>
-            <input step="00.01" [(ngModel)]='margen' (click)="limpiarComociones2()" (keyup)="funcioneRevision2()"
-              type="number" matInput>
+            <input min="1.01" max="1.99" step=".01" [(ngModel)]='margen' (keyup)="funcioneRevision2()" type="number"
+              matInput>
           </mat-form-field>
           <div class="typElement">
             <p>PP</p>
           </div>
+          <p>Formato 1.XX PP</p>
         </div>
         <div *ngIf="tasabase == 1">
           <mat-form-field appearance="fill">
@@ -272,6 +273,7 @@
               </mat-form-field>
             </div>     -->
       </div>
+
       <div class="col-lg-4">
         <div *ngIf="tasa==1">
           <div *ngIf="moneda==1">
@@ -294,12 +296,13 @@
         <div *ngIf="tasa==2">
           <mat-form-field appearance="fill">
             <mat-label class="letraSize">Margen</mat-label>
-            <input step="00.01" [(ngModel)]='margen' (click)="limpiarComociones2()" (keyup)="funcioneRevision2()"
-              type="number" matInput>
+            <input min="1.01" max="1.99" step=".01" [(ngModel)]='margen' (keyup)="funcioneRevision2()" type="number"
+              matInput>
           </mat-form-field>
           <div class="typElement">
             <p>PP</p>
           </div>
+          <p>Formato 1.XX PP</p>
         </div>
 
         <!-- <div *ngIf="tasabase == 1 && tasa== 1">
@@ -316,6 +319,16 @@
           </mat-form-field>
         </div>
 
+
+        <div *ngIf="tasabase == 1 && pagoInteres == 1">
+          <mat-form-field appearance="fill">
+            <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
+            <input class="labelNegro" value="TIIE 30 Días" [disabled]="true" #sel1 (blur)="pptos()" type="text"
+              matInput>
+          </mat-form-field>
+        </div>
+
+
       </div>
 
       <div class="col-lg-4">
@@ -331,20 +344,21 @@
             <mat-label class="letraSize">LIBOR</mat-label>
             <mat-select [(value)]="libor">
               <mat-option value="1">30</mat-option>
-              <mat-option value="2">60</mat-option>
-              <mat-option value="3">90</mat-option>
+              <!-- <mat-option value="2">60</mat-option>
+              <mat-option value="3">90</mat-option> -->
             </mat-select>
           </mat-form-field>
         </div>
         <div *ngIf="tasabase==1">
           <mat-form-field appearance="fill">
             <mat-label class="letraSize">Margen</mat-label>
-            <input step="00.01" [(ngModel)]='margen' (click)="limpiarComociones2()" (keyup)="funcioneRevision2()"
-              type="number" matInput>
+            <input min="1.01" max="1.99" step=".01" [(ngModel)]='margen' (keyup)="funcioneRevision2()" type="number"
+              matInput>
           </mat-form-field>
           <div class="typElement">
             <p>PP</p>
           </div>
+          <p>Formato 1.XX PP</p>
         </div>
         <!-- <div  *ngIf="tasabase == 2 && tasa== 1">
               <mat-form-field appearance="fill">
@@ -354,6 +368,122 @@
             </div> -->
       </div>
 
+    </div>
+    <br>
+    <mat-slide-toggle [(ngModel)]="newTasa">Agregar otra tasa?</mat-slide-toggle>
+    <br>
+    <br>
+    <div *ngIf="newTasa==true">
+      <h4>Tasas 2</h4>
+      <div class="row">
+        <div class="col-lg-4">
+          <mat-form-field class="example-full-width">
+            <mat-label class="letraSize">Tasa</mat-label>
+            <mat-select #sel (selectionChange)="modalidadTasa2(sel.value)" [(value)]="tasa2">
+              <mat-option value="1">Variable</mat-option>
+              <mat-option value="2">Fija</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div *ngIf="tasabase2==2">
+            <mat-form-field appearance="fill">
+              <mat-label class="letraSize">Margen</mat-label>
+              <input min="1.01" max="1.99" step=".01" [(ngModel)]='margen2' (keyup)="funcioneRevision22()" type="number"
+                matInput>
+            </mat-form-field>
+            <div class="typElement">
+              <p>PP</p>
+            </div>
+            <p>Formato 1.XX PP</p>
+          </div>
+          <div *ngIf="tasabase2 == 1">
+            <mat-form-field appearance="fill">
+              <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
+              <input [(ngModel)]="tasaMorafija2" class="labelNegro" [disabled]="true" #sel1 (blur)="pptos()" type="text"
+                matInput>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div *ngIf="tasa2==1">
+            <div *ngIf="moneda==1">
+              <mat-form-field class="example-full-width">
+                <mat-label class="letraSize">Tasa Base</mat-label>
+                <mat-select [(value)]="tasabase2">
+                  <mat-option value="1">TIIE </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div *ngIf="moneda==2">
+              <mat-form-field class="example-full-width">
+                <mat-label class="letraSize">Tasa Base</mat-label>
+                <mat-select [(value)]="tasabase2">
+                  <mat-option value="2">LIBOR</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div *ngIf="tasa2==2">
+            <mat-form-field appearance="fill">
+              <mat-label class="letraSize">Margen</mat-label>
+              <input min="1.01" max="1.99" step=".01" [(ngModel)]='margen2' (keyup)="funcioneRevision22()" type="number"
+                matInput>
+            </mat-form-field>
+            <div class="typElement">
+              <p>PP</p>
+            </div>
+            <p>Formato 1.XX PP</p>
+          </div>
+          <div *ngIf="tasabase2 == 2 && tasa2== 1">
+            <mat-form-field appearance="fill">
+              <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
+              <input class="labelNegro" [(ngModel)]="tasaMorafija2" [disabled]="true" #sel1 (blur)="pptos()" type="text"
+                matInput>
+            </mat-form-field>
+          </div>
+
+
+          <div *ngIf="tasabase2 == 1 && pagoInteres == 1">
+            <mat-form-field appearance="fill">
+              <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
+              <input class="labelNegro" value="TIIE 30 Días" [disabled]="true" #sel1 (blur)="pptos()" type="text"
+                matInput>
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <div class="col-lg-4">
+          <div *ngIf="tasa2 == 2">
+            <mat-form-field appearance="fill">
+              <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
+              <input class="labelNegro" [(ngModel)]="tasaMorafija2" [disabled]="true" #sel1 (blur)="pptos()" type="text"
+                matInput>
+            </mat-form-field>
+          </div>
+          <div *ngIf="tasabase2==2">
+            <mat-form-field class="example-full-width">
+              <mat-label class="letraSize">LIBOR</mat-label>
+              <mat-select [(value)]="libor">
+                <mat-option value="1">30</mat-option>
+                <!-- <mat-option value="2">60</mat-option>
+                <mat-option value="3">90</mat-option> -->
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div *ngIf="tasabase2==1">
+            <mat-form-field appearance="fill">
+              <mat-label class="letraSize">Margen</mat-label>
+              <input min="1.01" max="1.99" step=".01" [(ngModel)]='margen2' (keyup)="funcioneRevision22()" type="number"
+                matInput>
+            </mat-form-field>
+            <div class="typElement">
+              <p>PP</p>
+            </div>
+            <p>Formato 1.XX PP</p>
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <h4>Comisiones</h4>
@@ -383,7 +513,7 @@
       <div class="col-lg-4">
         <mat-form-field appearance="fill">
           <mat-label class="letraSize">Comision</mat-label>
-          <input [(ngModel)]='porComision' type="number" (click)="limpiarComociones()" (keyup)="funcioneRevision()"
+          <input [(ngModel)]='porComision' type="number"  min="1.01" max="1.59" step=".01" (keyup)="funcioneRevision()"
             matInput>
         </mat-form-field>
         <div class="typElement">
@@ -410,7 +540,15 @@
           </mat-form-field>
         </div>
       </div>
-      <div class="col-lg-4"></div>
+      <div class="col-lg-4"  *ngIf="modalidad==1">
+        <mat-form-field class="example-full-width">
+          <mat-label class="letraSize">Fuente de Fondeo </mat-label>
+          <mat-select [(value)]="fondeo">
+            <mat-option value="2">Propios</mat-option>
+            <mat-option value="3">FIRA</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
       <div class="col-lg-4"></div>
     </div>
 
