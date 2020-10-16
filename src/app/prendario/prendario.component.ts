@@ -47,6 +47,8 @@ export class PrendarioComponent implements OnInit {
   libor2;
   tasabase2;
   tasa2;
+  pagoInteres;
+  newTasa;
 
   constructor() { }
   ngOnInit() {

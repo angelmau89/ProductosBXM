@@ -42,6 +42,8 @@ export class FactorajeComponent implements OnInit {
   libor2;
   tasaMorafija="T.O X 2";
   tasaMorafija2="T.O X 2";
+  newTasa;
+  fondeo;
 
   constructor() { }
 
