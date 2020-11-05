@@ -307,7 +307,7 @@
               <div class="col-lg-4">
                 <div *ngIf="subTipoGarantia!=2">
                   <mat-form-field class="accordionWidth" appearance="fill">
-                    <mat-label class="letraSize">Folio del certificado de libertad de gravamen </mat-label>
+                    <mat-label class="letraSize">Folio del certificado de libertad de gravamen con aviso preventivo</mat-label>
                     <input type="number" matInput>
                   </mat-form-field>
                   <div class="typElement">
@@ -323,7 +323,7 @@
               <div class="col-lg-4">
                 <div *ngIf="subTipoGarantia!=2">
                   <mat-form-field class="accordionWidth" color="accent" appearance="fill">
-                    <mat-label>Fecha emisión del certificado de libertad de gravamen</mat-label>
+                    <mat-label>Fecha emisión del certificado de libertad de gravamen con aviso preventivo</mat-label>
                     <input matInput [matDatepicker]="picker3">
                     <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
                     <mat-datepicker #picker3></mat-datepicker>
@@ -706,7 +706,7 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
             <div class="row">
-              <div class="col-lg-4">
+              <!-- <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill">
                   <mat-label class="letraSize">ID certificado de deposito</mat-label>
                   <input type="text" matInput>
@@ -714,7 +714,7 @@
                 <div class="typElement">
                   <p>No.</p>
                 </div>
-              </div>
+              </div> -->
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill">
                   <mat-label class="letraSize">Almacén autorizado</mat-label>
@@ -731,17 +731,26 @@
               </div>
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill">
-                  <mat-label class="letraSize">Valor de certificado</mat-label>
+                  <mat-label class="letraSize">Valor total de certificados </mat-label>
                   <input type="number" matInput>
                 </mat-form-field>
                 <div class="typElement">
                   <p>$</p>
                 </div>
               </div>
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Número total de certificados</mat-label>
+                  <input type="number" matInput>
+                </mat-form-field>
+                <div class="typElement">
+                  <p>No.</p>
+                </div>
+              </div>
             </div>
 
 
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" color="accent" appearance="fill">
                   <mat-label>Fecha de vencimiento</mat-label>
@@ -774,7 +783,7 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-            </div>
+            </div> -->
 
             <div class="row">
               <div class="col-lg-4">
@@ -1505,8 +1514,8 @@
             </mat-expansion-panel-header>
   
             <!-- Fila 1 -->
-            <div class="row">
-              <div class="col-lg-4">
+            <div class="row" *ngIf="subTipoGarantia==1">
+              <!-- <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill">
                   <mat-label class="letraSize">Aforo</mat-label>
                   <input  [(ngModel)]='aforo' (click)="limpiarComociones()" (keyup)="funcioneRevision()" value="1" disabled="true" type="number" matInput>
@@ -1514,8 +1523,55 @@
                 <div class="typElement">
                   <p>A 1</p>
                 </div>
+              </div> -->
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Nombre 1</mat-label>
+                  <input type="text" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Nombre 2</mat-label>
+                  <input type="text" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Nombre 3</mat-label>
+                  <input type="text" matInput>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- Fila 2 -->
+            <div class="row" *ngIf="subTipoGarantia==1">
+              <div class="col-lg-4"><mat-form-field class="accordionWidth" appearance="fill">
+                <mat-label class="letraSize">Apellido 1</mat-label>
+                <input type="text" matInput>
+              </mat-form-field>
+            </div>
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Apellido 2</mat-label>
+                  <input type="text" matInput>
+                </mat-form-field>
               </div>
               <div class="col-lg-4"></div>
+            </div>
+            <!-- Fila 3 -->
+            <div class="row" *ngIf="subTipoGarantia==2">
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Nombre Denominación</mat-label>
+                  <input type="text" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Razón social</mat-label>
+                  <input type="text" matInput>
+                </mat-form-field>
+              </div>
               <div class="col-lg-4"></div>
             </div>
   

@@ -110,10 +110,10 @@ export class GarantiaLiquidaComponent implements OnInit {
 
   subTipoGarantiaJSON=[ 
     //liquida
-    {"type":1, "ID": 1,"Name": "1610 Mandato",},
-    {"type":1, "ID": 2,"Name": "1620 Carta de Crédito a la Vista",},
+    {"type":1, "ID": 1,"Name": "1610 Depósito",},
+    //{"type":1, "ID": 2,"Name": "1620 Carta de Crédito a la Vista",},
     {"type":1, "ID": 3,"Name": "1640 Fondo de reserva",},
-    {"type":1, "ID": 4,"Name": "Certificados Fiduciarios",},
+    {"type":1, "ID": 4,"Name": "1630 Certificados Fiduciarios",},
     //hipoteca
     {"type":2, "ID": 1,"Name": "1110 Inmuebles",},
     {"type":2, "ID": 2,"Name": "1120 Muebles",},
@@ -129,7 +129,7 @@ export class GarantiaLiquidaComponent implements OnInit {
     {"type":5, "ID": 1,"Name": "1410 C. Depósito y Bono de Prenda",},
     //Prendaria
     {"type":6, "ID": 1,"Name": "1210 Bienes Tangibles",},
-    {"type":6, "ID": 2,"Name": "1220 Bienes Intangibles",},
+    {"type":6, "ID": 2,"Name": "1220 Prenda sobre derechos de cobro",},
     {"type":6, "ID": 3,"Name": "1230 Prenda Bursátil",},
     //Derechos Fiduciarios
     {"type":7, "ID": 1,"Name": "1510 Hipotecarios",},
@@ -155,7 +155,7 @@ export class GarantiaLiquidaComponent implements OnInit {
     {"type":1, "type2":1, "ID": 2,"Name": "1613 Cta. Depósito Bancario",},
     {"type":1, "type2":1, "ID": 3,"Name": "1615 Inversiones",},
     {"type":1, "type2":3, "ID": 4,"Name": "1641 Proyectos",},
-    {"type":1, "type2":3, "ID": 5,"Name": "1642 Programas",},
+    {"type":1, "type2":3, "ID": 5,"Name": "1642 Reciprocidad",},
     //liquida
     {"type":2, "type2":1, "ID": 1,"Name": "1111 Habitacional",},
     {"type":2, "type2":1, "ID": 2,"Name": "1112 Comercial",},
@@ -200,7 +200,7 @@ export class GarantiaLiquidaComponent implements OnInit {
     {"type":6, "type2":1, "ID": 6,"Name": "1216 Inventario de Materia prima",},
     {"type":6, "type2":2, "ID": 7,"Name": "1221 Cuentas por cobrar",},
     {"type":6, "type2":2, "ID": 8,"Name": "1222 Acciones privadas",},
-    {"type":6, "type2":2, "ID": 9,"Name": "Derechos fiduciarios",},
+    //{"type":6, "type2":2, "ID": 9,"Name": "Derechos fiduciarios",},
     //Cesión de Derechos
     {"type":8, "type2":1, "ID": 1,"Name": "1311 Con Notificación",},
     {"type":8, "type2":1, "ID": 2,"Name": "1312 Sin Notificación",},
