@@ -71,7 +71,7 @@
               <div class="col-lg-4">
                 <mat-form-field class="example-full-width" *ngIf="subTipoGarantia==1 && subSubTipoGarantia==2">
                   <mat-label class="letraSize accordionWidth">Tipo de cuenta</mat-label>
-                  <mat-select>
+                  <mat-select [(ngModel)]='selecTipoCueLiqui' (selectionChange)="onChange(value)">
                     <mat-option value="1">A</mat-option>
                     <mat-option value="2">B</mat-option>
                     <mat-option value="3">C</mat-option>
@@ -82,13 +82,14 @@
               <div class="col-lg-4">
                 <mat-form-field class="example-full-width accordionWidth"
                   *ngIf="subTipoGarantia==1 && subSubTipoGarantia==2">
-                  <mat-label class="letraSize ">Rendimiento</mat-label>
-                  <mat-select>
+                  <mat-label class="letraSize labelNegro">Rendimiento</mat-label>
+                  <input class="labelNegro" [disabled]="true" [(ngModel)]='selecRendiLiqui' type="text" matInput>
+                  <!-- <mat-select [(ngModel)]='selecRendiLiqui'>
                     <mat-option value="1">Sin interés</mat-option>
                     <mat-option value="2">25%</mat-option>
                     <mat-option value="3">50%</mat-option>
                     <mat-option value="4">80%</mat-option>
-                  </mat-select>
+                  </mat-select>-->
                 </mat-form-field>
               </div>
             </div>
@@ -198,6 +199,12 @@
                 </div>
               </div>
               <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Descripción</mat-label>
+                  <input type="text" matInput>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-4">
                 <mat-form-field class="example-full-width" *ngIf="subTipoGarantia==2">
                   <mat-label class="letraSize accordionWidth">Moneda</mat-label>
                   <mat-select>
@@ -207,7 +214,6 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div class="col-lg-4"></div>
             </div>
           </mat-expansion-panel>
         </mat-accordion>
@@ -238,7 +244,7 @@
               </div>
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" color="accent" appearance="fill">
-                  <mat-label>Fecha de vencimiento</mat-label>
+                  <mat-label>Fecha de escritura</mat-label>
                   <input matInput [matDatepicker]="picker1">
                   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                   <mat-datepicker #picker1></mat-datepicker>
@@ -343,7 +349,21 @@
               </div>
             </div>
 
-            <!-- Fila 4 -->
+            <!-- Fila 5 -->
+            <div class="row">
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" color="accent" appearance="fill">
+                  <mat-label>Fecha de ingreso al Registro Publico</mat-label>
+                  <input matInput [matDatepicker]="picker23">
+                  <mat-datepicker-toggle matSuffix [for]="picker23"></mat-datepicker-toggle>
+                  <mat-datepicker #picker23></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4"></div>
+            </div>
+
+            <!-- Fila 6 -->
             <div class="row" *ngIf="subTipoGarantia==2">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill">
@@ -460,28 +480,29 @@
             </mat-expansion-panel-header>
             <div class="row">
               <div class="col-lg-8">
-                <mat-form-field class="example-full-width" *ngIf="subTipoGarantia==1">
-                  <mat-label class="letraSize accordionWidth">Moneda</mat-label>
+                <mat-form-field class="example-full-width"  *ngIf="subTipoGarantia!=3">
+                  <mat-label class="letraSize accordionWidth">Programa</mat-label>
                   <mat-select [(value)]="programa">
-                    <mat-option value="1">FONAFOR-Fondo Nacional Forestal</mat-option>
-                    <mat-option value="2">Proyectos sostenibles</mat-option>
-                    <mat-option value="3">Grandes empresas probabilidad incumplimiento hasta 1%</mat-option>
-                    <mat-option value="4">Grandes empresas probabilidad incumplimiento mayor 1% y hasta 1.5%
-                    </mat-option>
-                    <mat-option value="5">Grandes empresas probabilidad incumplimiento mayor 1.5% y hasta 2%
-                    </mat-option>
-                    <mat-option value="6">Mediana empresa agroalimentaria rural</mat-option>
-                    <mat-option value="7">Mediana empresa - FONAGA</mat-option>
-                    <mat-option value="8">Programa de garantía para la ampliación de servicios financieros a través de
-                      IFNB</mat-option>
-                    <mat-option value="9">Programa permanente de apoyo a zonas afectadas por desastres naturales
-                    </mat-option>
-                    <mat-option value="10">Financiamiento rural</mat-option>
-                    <mat-option value="11">Financiamiento a la población prioritaria</mat-option>
-                    <mat-option value="12">Volatilidad de precios - Apoyo en tasa</mat-option>
-                    <mat-option value="13">Cultivos perennes y proyectos de larga maduración</mat-option>
-                    <mat-option value="14">Programa emergente para la atención de la contingencia por coronavirus
-                    </mat-option>
+                    <mat-option value="1" *ngIf="subTipoGarantia==1">FONAFOR-Fondo Nacional Forestal</mat-option>
+                    <mat-option value="2" *ngIf="subTipoGarantia==1">Proyectos sostenibles</mat-option>
+                    <mat-option value="3" *ngIf="subTipoGarantia==1">Grandes empresas probabilidad incumplimiento hasta 1%</mat-option>
+                    <mat-option value="4" *ngIf="subTipoGarantia==1">Grandes empresas probabilidad incumplimiento mayor 1% y hasta 1.5%</mat-option>
+                    <mat-option value="5" *ngIf="subTipoGarantia==1">Grandes empresas probabilidad incumplimiento mayor 1.5% y hasta 2%</mat-option>
+                    <mat-option value="6" *ngIf="subTipoGarantia==1">Mediana empresa agroalimentaria rural</mat-option>
+                    <mat-option value="7" *ngIf="subTipoGarantia==1">Programa de garantía para la ampliación de servicios financieros a través de IFNB</mat-option>
+                    <mat-option value="8" *ngIf="subTipoGarantia==1">Financiamiento rural</mat-option>
+                    <mat-option value="9" *ngIf="subTipoGarantia==1">Programa emergente para la atención de la contingencia por coronavirus</mat-option>
+                    <mat-option value="10" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==1">Mediana empresa - FONAGA</mat-option>
+                    <mat-option value="11" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==1">Volatilidad de precios - Apoyo en tasa</mat-option>
+                    <mat-option value="12" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==1">Programa permanente de apoyo a zonas afectadas por desastres naturales</mat-option>
+                    <mat-option value="13" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==1">Financiamiento a la población prioritaria</mat-option>
+                    <mat-option value="14" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==1">Cultivos perennes y proyectos de larga maduración</mat-option>
+                    <mat-option value="15" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==1">Programa emergente para la atención de la contingencia por coronavirus</mat-option>
+                    <mat-option value="16" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==2">Mediana empresa - FONAGA</mat-option>
+                    <mat-option value="17" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==2">Programa permanente de apoyo a zonas afectadas por desastres naturales</mat-option>
+                    <mat-option value="18" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==2">Financiamiento a la población prioritaria</mat-option>
+                    <mat-option value="19" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==2">Cultivos perennes y proyectos de larga maduración</mat-option>
+                    <mat-option value="20" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==2">Programa emergente para la atención de la contingencia por coronavirus</mat-option>                                                
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -495,13 +516,14 @@
                 <mat-form-field class="example-full-width" *ngIf="subTipoGarantia!=3">
                   <mat-label class="letraSize accordionWidth">Cobertura</mat-label>
                   <mat-select>
-                    <mat-option value="1" *ngIf="programa==1 || programa==7  || programa==9 || programa==11  || programa==12  || programa==13  || programa==14 || (subTipoGarantia==2 && subSubTipoGarantia==1)">05%</mat-option>
+                    <mat-option value="1" *ngIf="programa==10  || programa==11  || programa==12  || programa==13  || programa==14  || programa==15">5%</mat-option>
                     <mat-option value="2" *ngIf="programa==6">12%</mat-option>
-                    <mat-option value="3" *ngIf="programa==1 || programa==7  || programa==9  || programa==11  || programa==13  || programa==14 || (subTipoGarantia==2 && subSubTipoGarantia==2)">20%</mat-option>
-                    <mat-option value="4" *ngIf="programa==2 || programa==3 || programa==4 || programa==5">40%</mat-option>
-                    <mat-option value="5" *ngIf="programa==2 || programa==3 || programa==4 || programa==5  || programa==8  || programa==9  || programa==10 || programa==14 || (subTipoGarantia==2 && subSubTipoGarantia==3)">50%</mat-option>
-                    <mat-option value="6" *ngIf="programa==8  || programa==9 || programa==14">80%</mat-option>
-                    <mat-option value="7" *ngIf="programa==8 || (subTipoGarantia==2 && subSubTipoGarantia==3)">90%</mat-option>
+                    <mat-option value="3" *ngIf="programa==10">14%</mat-option>
+                    <mat-option value="4" *ngIf="programa==16  || programa==17 || programa==18 || programa==19 || programa==20">20%</mat-option>
+                    <mat-option value="5" *ngIf="programa==1 || programa==2 || programa==3 || programa==4 || programa==5 || programa==8  || programa==9">40%</mat-option>
+                    <mat-option value="6" *ngIf="programa==1 || programa==2 || programa==3 || programa==4 || programa==5 || programa==7 || programa==8  || programa==9 || subSubTipoGarantia==3">50%</mat-option>
+                    <mat-option value="7" *ngIf="programa==7">80%</mat-option>
+                    <mat-option value="8" *ngIf="programa==7 || subSubTipoGarantia==3">90%</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -510,8 +532,8 @@
                   <mat-label class="letraSize accordionWidth">Cobertura garantía FEGA</mat-label>
                   <mat-select>
                     <mat-option value="1">50%</mat-option>
-                    <mat-option value="2">80%</mat-option>
-                    <mat-option value="3">90%</mat-option>
+                    <mat-option value="2" *ngIf="subSubTipoGarantia!=3">80%</mat-option>
+                    <mat-option value="3" *ngIf="subSubTipoGarantia==3">90%</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -582,7 +604,7 @@
               <div class="col-lg-4">
                 <mat-form-field class="example-full-width">
                   <mat-label class="letraSize accordionWidth">Programa</mat-label>
-                  <mat-select>
+                  <mat-select [(ngModel)]='BancaDesaProgra'>
                     <mat-option value="1" *ngIf="subTipoGarantia==1 && subSubTipoGarantia==3">Hoteles y empresas turísticas</mat-option>
                     <mat-option value="2" *ngIf="subTipoGarantia==1 && subSubTipoGarantia==3">Industria textil vestido y moda</mat-option>
                     <mat-option value="3" *ngIf="subTipoGarantia==1 && subSubTipoGarantia==3">Moldes troqueles y herramentales</mat-option>
@@ -598,8 +620,9 @@
                   <mat-select>
                     <mat-option value="1" *ngIf="(subTipoGarantia==1 && subSubTipoGarantia==1) || (subTipoGarantia==1 && subSubTipoGarantia==2) || (subTipoGarantia==2 && subSubTipoGarantia==1) || (subTipoGarantia==3 && subSubTipoGarantia==1)">50%</mat-option>
                     <mat-option value="2" *ngIf="(subTipoGarantia==2 && subSubTipoGarantia==2)">60%</mat-option>
-                    <mat-option value="3" *ngIf="(subTipoGarantia==1 && subSubTipoGarantia==3) || (subTipoGarantia==2 && subSubTipoGarantia==3)">70%</mat-option>
-                    <mat-option value="4" *ngIf="(subTipoGarantia==2 && subSubTipoGarantia==3)">90%</mat-option>
+                    <mat-option value="3" *ngIf="(subTipoGarantia==1 && subSubTipoGarantia==3) || (subTipoGarantia==2 && subSubTipoGarantia==3 && BancaDesaProgra==5)">70%</mat-option>
+                    <mat-option value="4" *ngIf="(subTipoGarantia==2 && subSubTipoGarantia==3 && BancaDesaProgra==6)">90%</mat-option>
+
                   </mat-select>
                 </mat-form-field>   
               </div>
@@ -694,6 +717,20 @@
               </div>
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Almacén autorizado</mat-label>
+                  <mat-select>
+                    <mat-option value="1">Almacenadora Accel</mat-option>
+                    <mat-option value="2">Almacenadora Mercader</mat-option>
+                    <mat-option value="3">Almacenadora Banorte</mat-option>
+                    <mat-option value="4">Almacenadora Regional Mexicana</mat-option>
+                    <mat-option value="5">Almacenadora Sur</mat-option>
+                    <mat-option value="6">Almacenes Generales de Depósito del Yaqui</mat-option>
+                    <mat-option value="7">Argo Almacenadora</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" appearance="fill">
                   <mat-label class="letraSize">Valor de certificado</mat-label>
                   <input type="number" matInput>
                 </mat-form-field>
@@ -701,6 +738,10 @@
                   <p>$</p>
                 </div>
               </div>
+            </div>
+
+
+            <div class="row">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" color="accent" appearance="fill">
                   <mat-label>Fecha de vencimiento</mat-label>
@@ -709,10 +750,6 @@
                   <mat-datepicker #picker7></mat-datepicker>
                 </mat-form-field>
               </div>
-            </div>
-
-
-            <div class="row">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill">
                   <mat-label class="letraSize">Cantidad</mat-label>
@@ -737,6 +774,9 @@
                   </mat-select>
                 </mat-form-field>
               </div>
+            </div>
+
+            <div class="row">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill">
                   <mat-label class="letraSize">Precio de referencia</mat-label>
@@ -746,7 +786,10 @@
                   <p>No.</p>
                 </div>
               </div>
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4"></div>
             </div>
+
           </mat-expansion-panel>
         </mat-accordion>
       </div>
@@ -775,58 +818,90 @@
                   <p>A 1</p>
                 </div>
               </div>
-              <div class="col-lg-4">
-                <mat-form-field class="example-full-width" *ngIf="subTipoGarantia==1 &&  subSubTipoGarantia==5">
-                  <mat-label class="letraSize accordionWidth">Tipo de inventario</mat-label>
-                  <mat-select>
-                    <mat-option value="1">Pie de cria</mat-option>
-                    <mat-option value="2">Ganado para engorda</mat-option>
+              <div class="col-lg-4" *ngIf="subTipoGarantia==3">  
+                <mat-form-field class="example-full-width" >
+                  <mat-label class="letraSize accordionWidth">Tipo de activo</mat-label>
+                  <mat-select [(ngModel)]="tipoActivo">
+                    <mat-option value="1">Fondos</mat-option>
+                    <mat-option value="2">Acciones IPC</mat-option>
+                    <mat-option value="3">Acciones SIC</mat-option>
+                    <mat-option value="4">Deuda</mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
               <div class="col-lg-4">
+                  <mat-form-field class="accordionWidth" appearance="fill">
+                    <mat-label class="letraSize">Descripción</mat-label>
+                    <input type="text" matInput>
+                  </mat-form-field>
+              </div>
+
+            </div>
+           <!-- Fila 2 -->
+            <div class="row">
+
+              <div class="col-lg-4">
+                <div *ngIf="subTipoGarantia==3">
+                  <mat-form-field class="example-full-width" >
+                    <mat-label class="letraSize accordionWidth">Clasificación del activo</mat-label>
+                    <mat-select>
+                      <mat-option value="1" *ngIf="tipoActivo==1">Fondo BX+ CP</mat-option>
+                      <mat-option value="2" *ngIf="tipoActivo==1">Fondo BX+ MP </mat-option>
+                      <mat-option value="3" *ngIf="tipoActivo==1">Fondo BX+ CAP</mat-option>
+                      <mat-option value="4" *ngIf="tipoActivo==2">Alta bursátilidad</mat-option>
+                      <mat-option value="5" *ngIf="tipoActivo==2">Media bursátilidad</mat-option>
+                      <mat-option value="6" *ngIf="tipoActivo==2">Baja bursátilidad</mat-option>
+                      <mat-option value="7" *ngIf="tipoActivo==4">Gubernamental</mat-option>
+                      <mat-option value="8" *ngIf="tipoActivo==4">Privada</mat-option>
+                      <mat-option value="9" *ngIf="tipoActivo==4">Pagaré Bancario Bx+</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  </div>
+              </div>
+
+              <div class="col-lg-4"  *ngIf="subTipoGarantia==1 &&  subSubTipoGarantia==5">
+                <mat-form-field class="example-full-width">
+                  <mat-label class="letraSize accordionWidth">Tipo de inventario</mat-label>
+                  <mat-select [(ngModel)]="TipoInventario">
+                    <mat-option value="1">Pie de cria</mat-option>
+                    <mat-option value="2">Ganado para engorda</mat-option>
+                    <mat-option value="3">Otros</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col-lg-4" *ngIf="subTipoGarantia==1 &&  subSubTipoGarantia==5 && TipoInventario==3">
+                <mat-form-field class="accordionWidth" appearance="fill">
+                  <mat-label class="letraSize">Descripción</mat-label>
+                  <input type="text" matInput>
+                </mat-form-field>
+              </div>
+
+              <div class="col-lg-4" *ngIf="subTipoGarantia==3">
                 <div *ngIf="subTipoGarantia==3">
                 <mat-form-field class="accordionWidth" appearance="fill">
                   <mat-label class="letraSize">Llamada de margen</mat-label>
                   <input type="number" matInput>
                 </mat-form-field>
                 <div class="typElement">
-                  <p>%</p>
+                  <p>A 1</p>
                 </div>
               </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-lg-4">
+              <div class="col-lg-4" *ngIf="subTipoGarantia==3">
                 <div *ngIf="subTipoGarantia==3">
                 <mat-form-field class="accordionWidth" appearance="fill">
                   <mat-label class="letraSize">Aforo minimo de ejecución</mat-label>
-                  <input [(ngModel)]='aforo' (click)="limpiarComociones()" (keyup)="funcioneRevision()" type="number" matInput>
+                  <input type="number" matInput>
                 </mat-form-field>
                 <div class="typElement">
-                  <p>%</p>
+                  <p>A 1</p>
                 </div>
               </div>
               </div>
-              <div class="col-lg-4">
-                <div *ngIf="subTipoGarantia==3">
-                <mat-form-field class="example-full-width" >
-                  <mat-label class="letraSize accordionWidth">Bursatilidad</mat-label>
-                  <mat-select>
-                    <mat-option value="1">Alta</mat-option>
-                    <mat-option value="2">Media</mat-option>
-                    <mat-option value="3">Baja</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <mat-form-field class="accordionWidth" appearance="fill">
-                  <mat-label class="letraSize">Descripción</mat-label>
-                  <input type="text" matInput>
-                </mat-form-field>
-              </div>
+
+
             </div>
 
           </mat-expansion-panel>
@@ -942,7 +1017,7 @@
             <div class="row">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" color="accent" appearance="fill" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==1">
-                  <mat-label>Fecha de expiración de póliza</mat-label>
+                  <mat-label>Fecha de vencimiento (última)</mat-label>
                   <input matInput [matDatepicker]="picker10">
                   <mat-datepicker-toggle matSuffix [for]="picker10"></mat-datepicker-toggle>
                   <mat-datepicker #picker10></mat-datepicker>
@@ -950,22 +1025,22 @@
               </div>
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" color="accent" appearance="fill" *ngIf="subTipoGarantia==2 && subSubTipoGarantia==1">
-                  <mat-label>Fecha de expiración de póliza</mat-label>
+                  <mat-label>Fecha de vencimiento ponderada</mat-label>
                   <input matInput [matDatepicker]="picker11">
                   <mat-datepicker-toggle matSuffix [for]="picker11"></mat-datepicker-toggle>
                   <mat-datepicker #picke11></mat-datepicker>
                 </mat-form-field>
               </div>
               <div class="col-lg-4">
-                <div *ngIf="subTipoGarantia==3">
+                <!-- <div *ngIf="subTipoGarantia==3">
                 <mat-form-field class="accordionWidth" appearance="fill" >
-                  <mat-label class="letraSize">No. De factura(s)</mat-label>
+                  <mat-label class="letraSize">Cuenta garantía bursátil</mat-label>
                   <input type="number" matInput>
                 </mat-form-field>
                 <div class="typElement">
                   <p>No.</p>
                 </div>
-              </div>
+              </div> -->
               </div>
             </div>
 
@@ -1029,17 +1104,37 @@
             <div class="row">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill" >
-                  <mat-label class="letraSize">No. De escritura</mat-label>
+                  <mat-label class="letraSize">ID fideicomiso </mat-label>
                   <input type="number" matInput>
                 </mat-form-field>
                 <div class="typElement">
                   <p>No.</p>
                 </div>
               </div>
+
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" color="accent" appearance="fill" >
+                  <mat-label>Fecha de fideicomiso</mat-label>
+                  <input matInput [matDatepicker]="picker24">
+                  <mat-datepicker-toggle matSuffix [for]="picker24"></mat-datepicker-toggle>
+                  <mat-datepicker #picker24></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <div class="col-lg-4">
+                  <mat-form-field class="accordionWidth" appearance="fill" >
+                    <mat-label class="letraSize">Nombre del fideicomiso</mat-label>
+                    <input type="text" matInput>
+                  </mat-form-field>
+              </div>
+
+            </div>
+
+            <div class="row" *ngIf="subTipoGarantia==1">
               <div class="col-lg-4">
                 <div *ngIf="subTipoGarantia==1">
                   <mat-form-field class="accordionWidth" appearance="fill" >
-                    <mat-label class="letraSize">No. De escritura</mat-label>
+                    <mat-label class="letraSize">No. De escritura del bien</mat-label>
                     <input type="number" matInput>
                   </mat-form-field>
                   <div class="typElement">
@@ -1047,6 +1142,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" color="accent" appearance="fill" *ngIf="subTipoGarantia==1">
                   <mat-label>Fecha de escritura</mat-label>
@@ -1055,6 +1151,8 @@
                   <mat-datepicker #picker12></mat-datepicker>
                 </mat-form-field>
               </div>
+
+              <div class="col-lg-4"></div>
             </div>
 
             <div class="row" *ngIf="subTipoGarantia==1">
@@ -1075,7 +1173,7 @@
               </div>
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill" >
-                  <mat-label class="letraSize">No. De avalúoa</mat-label>
+                  <mat-label class="letraSize">No. De avalúo</mat-label>
                   <input type="number" matInput>
                 </mat-form-field>
                 <div class="typElement">
@@ -1124,7 +1222,7 @@
               </div>
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" color="accent" appearance="fill">
-                  <mat-label>Fecha de avalúo</mat-label>
+                  <mat-label>Fecha emisión del certificado de libertad de gravamen</mat-label>
                   <input matInput [matDatepicker]="picker14">
                   <mat-datepicker-toggle matSuffix [for]="picker14"></mat-datepicker-toggle>
                   <mat-datepicker #picker14></mat-datepicker>
@@ -1144,10 +1242,18 @@
             <div class="row" *ngIf="subTipoGarantia==1">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" color="accent" appearance="fill">
-                  <mat-label>Fecha de inscripción Registro Publico  </mat-label>
+                  <mat-label>Fecha de ingreso Registro Publico    </mat-label>
                   <input matInput [matDatepicker]="picker15">
                   <mat-datepicker-toggle matSuffix [for]="picker15"></mat-datepicker-toggle>
                   <mat-datepicker #picker15></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-4">
+                <mat-form-field class="accordionWidth" color="accent" appearance="fill">
+                  <mat-label>Fecha de inscripción Registro Publico  </mat-label>
+                  <input matInput [matDatepicker]="picker25">
+                  <mat-datepicker-toggle matSuffix [for]="picker25"></mat-datepicker-toggle>
+                  <mat-datepicker #picker25></mat-datepicker>
                 </mat-form-field>
               </div>
               <div class="col-lg-4">
@@ -1159,6 +1265,11 @@
                   <p>No.</p>
                 </div>
               </div>
+              
+            </div>
+
+
+            <div class="row" *ngIf="subTipoGarantia==1">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill" >
                   <mat-label class="letraSize">No. Factura</mat-label>
@@ -1168,10 +1279,6 @@
                   <p>No.</p>
                 </div>
               </div>
-            </div>
-
-
-            <div class="row" *ngIf="subTipoGarantia==1">
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill" >
                   <mat-label class="letraSize">No. Serie</mat-label>
@@ -1181,7 +1288,6 @@
                   <p>No.</p>
                 </div>
               </div>
-              <div class="col-lg-4"></div>
               <div class="col-lg-4"></div>
             </div>
             
@@ -1224,7 +1330,7 @@
               </div>
               <div class="col-lg-4">
                 <mat-form-field class="accordionWidth" appearance="fill" *ngIf="subTipoGarantia==1">
-                  <mat-label class="letraSize">Cía. Póliza de seguroe</mat-label>
+                  <mat-label class="letraSize">Cía. Póliza de seguro</mat-label>
                   <input type="text" matInput>
                 </mat-form-field>
               </div>
@@ -1367,9 +1473,9 @@
 
             <!-- Fila 1 -->
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4" *ngIf="subTipoGarantia==1">
               <mat-form-field class="accordionWidth" appearance="fill">
-                <mat-label class="letraSize">Cuenta depositoa</mat-label>
+                <mat-label class="letraSize">Cuenta garantía</mat-label>
                 <input type="number" matInput>
               </mat-form-field>
               <div class="typElement">

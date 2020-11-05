@@ -2,7 +2,7 @@
     margin-left: 8px;
   }
 .accordionWidth{
-  width: 85%!important;
+  width: 80%!important;
 }
 mat-form-field {
   margin-right: 12px;
@@ -11,4 +11,8 @@ mat-panel-title.mat-expansion-panel-header-title {
   color: #3bb0c9;
   font-weight: 900;
   font-size: larger;
+}
+.labelNegro {
+  font-weight: 900!important;
+  color: black!important;
 }

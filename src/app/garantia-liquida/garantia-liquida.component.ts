@@ -17,8 +17,30 @@ export class GarantiaLiquidaComponent implements OnInit {
   programa;
   aforo;
   aux2;
+  selecRendiLiqui;
+  selecTipoCueLiqui;
+  tipoActivo;
+  TipoInventario;
+  BancaDesaProgra;
+
   constructor() { }
 
+
+  onChange(){
+    if(this.selecTipoCueLiqui==1){
+      this.selecRendiLiqui="Sin interés";
+    }
+    if(this.selecTipoCueLiqui==2){
+      this.selecRendiLiqui="25 %";
+    }
+    if(this.selecTipoCueLiqui==3){
+      this.selecRendiLiqui="50 %";
+    }
+    if(this.selecTipoCueLiqui==4){
+      this.selecRendiLiqui="80 %";
+    }
+      
+  }
 
   funcioneRevision(){
   
@@ -53,7 +75,9 @@ export class GarantiaLiquidaComponent implements OnInit {
     this.panelOpenState = true;
     this.panelOpenState1 = true;  
     this.panelOpenState2 = true; 
-    this.panelOpenState3 = true; 
+    this.panelOpenState3 = true;
+    this.subSubTipoGarantia=0;
+    this.subTipoGarantia=0; 
 
   }
   modalidadCambio2(){
@@ -61,14 +85,14 @@ export class GarantiaLiquidaComponent implements OnInit {
     this.panelOpenState1 = false;  
     this.panelOpenState2 = false; 
     this.panelOpenState3 = false; 
-
+    this.subSubTipoGarantia=0;
   }
   modalidadCambio3(){
     this.panelOpenState = false;
     this.panelOpenState1 = false;  
     this.panelOpenState2 = false; 
     this.panelOpenState3 = false; 
-
+    this.programa=0;
   }
 
   tipoGarantiaJSON=[ 
@@ -174,8 +198,9 @@ export class GarantiaLiquidaComponent implements OnInit {
     {"type":6, "type2":1, "ID": 4,"Name": "1214 Inventario de Bienes",},
     {"type":6, "type2":1, "ID": 5,"Name": "1215 Inventario de Animales",},
     {"type":6, "type2":1, "ID": 6,"Name": "1216 Inventario de Materia prima",},
-    {"type":6, "type2":2, "ID": 5,"Name": "1221 Cuentas por cobrar",},
-    {"type":6, "type2":2, "ID": 5,"Name": "1222 Acciones privadas",},
+    {"type":6, "type2":2, "ID": 7,"Name": "1221 Cuentas por cobrar",},
+    {"type":6, "type2":2, "ID": 8,"Name": "1222 Acciones privadas",},
+    {"type":6, "type2":2, "ID": 9,"Name": "Derechos fiduciarios",},
     //Cesión de Derechos
     {"type":8, "type2":1, "ID": 1,"Name": "1311 Con Notificación",},
     {"type":8, "type2":1, "ID": 2,"Name": "1312 Sin Notificación",},
