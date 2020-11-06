@@ -9,6 +9,7 @@ class struccomision {
 class mercaAforo {
   merca: string;
   aforo: number;
+  unidad:string;
 }
 
 @Component({
@@ -49,6 +50,8 @@ export class PrendarioComponent implements OnInit {
   tasa2;
   pagoInteres;
   newTasa;
+  unidad;
+  diasmax;
 
   constructor() { }
   ngOnInit() {
@@ -64,6 +67,7 @@ export class PrendarioComponent implements OnInit {
     let obj = new struccomision();
     obj.comsion = this.comision;
     obj.porcentaje = this.porComision;
+    
     let i = 0;
     let r = true;
     for (i = 0; i < this.lista.length; i++) {
@@ -110,6 +114,7 @@ export class PrendarioComponent implements OnInit {
     let obj = new mercaAforo();
     obj.aforo = this.aforo;
     obj.merca = this.merca;
+    obj.unidad=this.unidad;
     let i = 0;
     let r = true;
     if (this.lista2.length<4) {
@@ -234,6 +239,16 @@ export class PrendarioComponent implements OnInit {
     }else{
       this.tasabase2 = 0;
       this.libor2 = 0;
+    }
+  }
+  validar30a180(){
+    if(this.diasmax<30){
+      alert("El plazo minimo es 30 días ");
+      this.diasmax=null;
+    }
+    if(this.diasmax>180){
+      alert("El plazo máximo es 180 días");
+      this.diasmax=null;
     }
   }
 

@@ -348,7 +348,7 @@ export class CreditoCuentaCorrienteComponent implements OnInit {
     }
     else{
      this.aforo="";
-     alert("Aforo mayor a 80%");
+     alert("Aforo no mayor a 80%");
     }
     
   }

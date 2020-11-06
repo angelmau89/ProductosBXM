@@ -13,6 +13,13 @@
            
           </div></div>
         </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="estatusLinea"><label>Cancelación</label></div>
+          </div>
+          <div class="col-lg-4"></div>
+          <div class="col-lg-4"></div>
+        </div>
 
     <div class="row">
       <div class="col-lg-4">
@@ -109,7 +116,7 @@
     <div class="row">
       <div class="col-lg-4">
         <mat-form-field class="widthPLazo example-full-width">
-          <mat-label>PLazo del Contrato</mat-label>
+          <mat-label>Plazo del Contrato</mat-label>
           <mat-select [(ngModel)]='plazContra'>
             <mat-option value="1">12</mat-option>
             <mat-option value="2">24</mat-option>
@@ -131,6 +138,9 @@
           <mat-label>Facturas con plazo máximo</mat-label>
           <input type="number" matInput>
         </mat-form-field>
+        <div class="typElement">
+          <p>Días</p>
+        </div>
       </div>
     </div>
 
@@ -162,9 +172,9 @@
         <div *ngIf="modalidad==2">
           <mat-form-field class="example-full-width">
             <mat-label>Formas de pago de interes</mat-label>
-            <mat-select [(ngModel)]='plazContra'>
-              <mat-option value="1">Pago proveedor</mat-option>
-              <mat-option value="1">Pago emisor</mat-option>
+            <mat-select [(ngModel)]='pagoInteres'>
+              <mat-option value="1">Pago proveedor (Anticipado)</mat-option>
+              <mat-option value="2">Pago emisor (Mensual)</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -202,12 +212,12 @@
               matInput>
           </mat-form-field>
         </div>
-        <!-- <div *ngIf="tasa == 2">
-              <mat-form-field appearance="fill">
+        <div *ngIf="pagoInteres == 2">
+              <!-- <mat-form-field appearance="fill">
                 <mat-label class="letraSize">Tasa moratoria</mat-label>
                 <input [(ngModel)]="tasaMora" id="tasamora" (click)="limpiar()" #sel1 (blur)="pptos()" type="number" matInput>
-              </mat-form-field>
-            </div>     -->
+              </mat-form-field> -->
+            </div>
       </div>
 
       <div class="col-lg-4">
@@ -256,9 +266,9 @@
         </div>
 
 
-        <div *ngIf="tasabase == 1">
+        <div *ngIf="pagoInteres == 2">
           <mat-form-field appearance="fill">
-            <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
+            <mat-label class="letraSize labelNegro">Plazo de la tasa base</mat-label>
             <input class="labelNegro" value="TIIE 30 Días" [disabled]="true" #sel1 (blur)="pptos()" type="text"
               matInput>
           </mat-form-field>
@@ -280,8 +290,8 @@
             <mat-label class="letraSize">LIBOR</mat-label>
             <mat-select [(value)]="libor">
               <mat-option value="1">30</mat-option>
-              <!-- <mat-option value="2">60</mat-option>
-              <mat-option value="3">90</mat-option> -->
+              <mat-option value="2">60</mat-option>
+              <mat-option value="3">90</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -378,9 +388,9 @@
           </div>
 
 
-          <div *ngIf="tasabase2 == 1">
+          <div *ngIf="pagoInteres == 2">
             <mat-form-field appearance="fill">
-              <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
+              <mat-label class="letraSize labelNegro">Plazo de la tasa base</mat-label>
               <input class="labelNegro" value="TIIE 30 Días" [disabled]="true" #sel1 (blur)="pptos()" type="text"
                 matInput>
             </mat-form-field>
@@ -401,8 +411,8 @@
               <mat-label class="letraSize">LIBOR</mat-label>
               <mat-select [(value)]="libor">
                 <mat-option value="1">30</mat-option>
-                <!-- <mat-option value="2">60</mat-option>
-                <mat-option value="3">90</mat-option> -->
+                <mat-option value="2">60</mat-option>
+                <mat-option value="3">90</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -429,10 +439,11 @@
           <mat-label class="letraSize">Comision</mat-label>
           <mat-select [(value)]="comision">
             <mat-option value="Apertura">Apertura </mat-option>
-            <mat-option value="Disposición">Disposición </mat-option>
-            <mat-option value="Aniversario">Aniversario </mat-option>
-            <mat-option value="Administración">Administración </mat-option>
-            <mat-option value="Estructuración">Estructuración </mat-option>
+                <mat-option value="Disposición">Disposición </mat-option>
+                <mat-option value="Aniversario">Aniversario </mat-option>
+                <mat-option value="Estructuración">Pago Anticipado</mat-option>
+                <mat-option value="Administración">Administración </mat-option>
+                <mat-option value="Estructuración">Estructuración </mat-option>
           </mat-select>
         </mat-form-field>
         <table>

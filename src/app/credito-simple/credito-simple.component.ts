@@ -27,14 +27,25 @@ export class CreditoSimpleComponent implements OnInit {
   amortizacion;
   formaInteres;
   gracia;
-  Tasa;
+  tasa;
   tasabase;
   fondeo;
   Capitaliza;
-  margen;
+  margen=1.01;;
   aux2=0;
   aux=0;
   formaPago;
+  aforo;
+  tasaMorafija="T.O X 2";
+  tasaMorafija2="T.O X 2";
+  margen2=1.01;
+  newTasa=false;
+  tasabase2;
+  libor2;
+  tasa2;
+  libor;
+
+
 
   constructor() { }
 
@@ -95,7 +106,7 @@ export class CreditoSimpleComponent implements OnInit {
   funcioneRevision2(){
   
 
-    if(this.margen<=99.99)
+    if(this.margen<=1.99)
     { 
      
       console.log((this.margen+'').length);
@@ -108,7 +119,7 @@ export class CreditoSimpleComponent implements OnInit {
       
     }
     else{
-     this.margen=this.aux2;
+     this.margen=1.01;
     }
     
   }
@@ -144,5 +155,71 @@ export class CreditoSimpleComponent implements OnInit {
   plazoSinContrato(){
     this.plazContra
   }
+
+  inputAforo(){
+    if(this.aforo>=80){
+      if(this.aforo<=100){
+
+      }else{
+        alert("Aforo de 80 A 100")
+        this.aforo=80;
+      }
+
+    }else{
+      alert("Aforo de 80 A 100")
+      this.aforo=80;
+    }
+  }
+
+  limpiarAforo(){
+    this.aforo=null;
+  }
+
+  //Nuevas de tasa 2
+  funcioneRevision22(){
+  
+
+    if(this.margen2<=1.99)
+    { 
+     
+      console.log((this.margen2+'').length);
+  
+      if((this.margen2+'').length<=5){
+        this.aux2=this.margen2;
+      }else{
+        this.margen2=this.aux2;
+      }
+      
+    }
+    else{
+     this.margen2=1.01;
+    }
+    
+  }
+
+
+  modalidadTasa(value) {
+    if(this.tasa==this.tasa2){
+      alert("No se puede seleccionar la misma tasa dos veces.");
+      this.tasa="";
+      this.tasabase = 0;
+      this.libor = 0;
+      }else{
+        this.tasabase = 0;
+        this.libor = 0;
+      }
+  }
+  modalidadTasa2(value) {
+    if(this.tasa==this.tasa2){
+    alert("No se puede seleccionar la misma tasa dos veces.");
+    this.tasa2="";
+    this.tasabase2 = 0;
+    this.libor2 = 0;
+    }else{
+      this.tasabase2 = 0;
+      this.libor2 = 0;
+    }
+  }
+
 
 }

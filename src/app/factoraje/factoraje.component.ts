@@ -44,6 +44,7 @@ export class FactorajeComponent implements OnInit {
   tasaMorafija2="T.O X 2";
   newTasa;
   fondeo;
+  pagoInteres;
 
   constructor() { }
 
@@ -156,13 +157,10 @@ export class FactorajeComponent implements OnInit {
   vali30(){
     if(this.plazomin>=30)
     {
-      alert("El valor es máximo es de 30 días")
-      this.plazomin="";
+     
     }else{
-      if(this.plazomin<1){
-        alert("El valor es mínimo es de 1 días")
-        this.plazomin="";
-      }
+      alert("El valor minimo es de 30 días")
+      this.plazomin="";
     }    
   }
 

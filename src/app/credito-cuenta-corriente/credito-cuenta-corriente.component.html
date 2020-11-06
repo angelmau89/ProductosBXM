@@ -13,16 +13,22 @@
 
     <div class="row">
       <div class="col-lg-4">
-        <div class="estatusLinea"><label>Solicitud</label></div>
+        <div class="estatusLinea"><label>Solicitud </label></div>
       </div>
       <div class="col-lg-4">
         <div class="estatusLinea"><label>Recalificación</label></div>
       </div>
       <div class="col-lg-4">
-        <div class="estatusLinea"><label>Recalificación con aumento</label>
-
-        </div>
+        <div class="estatusLinea"><label>Recalificación con aumento</label></div>
       </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="estatusLinea"><label>Cancelación</label></div>
+      </div>
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4"></div>
     </div>
 
     <br>
@@ -57,9 +63,9 @@
           <br>
           <br>
           <mat-form-field class="example-full-width">
-            <mat-label class="letraSize">Comercialización</mat-label>
+            <mat-label class="letraSize">Destino</mat-label>
             <mat-select [(value)]="Destino_Profertil">
-              <mat-option value="1">Comercialización </mat-option>
+              <mat-option value="1">Compra de Fertilizantes, Insumos y/o Semillas</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -200,7 +206,7 @@
           <br>
           <br>
           <mat-form-field appearance="fill">
-            <mat-label class="letraSize">Archivo</mat-label>
+            <mat-label class="letraSize">Aforo</mat-label>
             <input [(ngModel)]='porfile' type="number" matInput>
           </mat-form-field>
           <div class="typElement">
@@ -263,9 +269,9 @@
     <div class="row">
       <div class="col-lg-4">
         <mat-form-field class="example-full-width">
-          <mat-label class="letraSize">Varias disposición</mat-label>
+          <mat-label class="letraSize">Varias disposiciones</mat-label>
           <mat-select [(value)]="dispo">
-            <mat-option value="1">Variacias disposición</mat-option>
+            <mat-option value="1">Varias disposiciones</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -397,7 +403,7 @@
         </mat-form-field>
       </div>
       <div class="col-lg-4">
-        <div *ngIf="modalidad==3">
+        <div *ngIf="modalidad==3 && forcapital==2">
           <mat-form-field class="example-full-width">
             <mat-label class="letraSize">Capitaliza</mat-label>
             <mat-select [(value)]="capitaliza">
@@ -495,7 +501,7 @@
 
         <div *ngIf="tasabase == 1 && pagoInteres == 1">
           <mat-form-field appearance="fill">
-            <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
+            <mat-label class="letraSize labelNegro">Plazo de la tasa base</mat-label>
             <input class="labelNegro" value="TIIE 30 Días" [disabled]="true" #sel1 (blur)="pptos()" type="text"
               matInput>
           </mat-form-field>
@@ -517,8 +523,8 @@
             <mat-label class="letraSize">LIBOR</mat-label>
             <mat-select [(value)]="libor">
               <mat-option value="1">30</mat-option>
-              <!-- <mat-option value="2">60</mat-option>
-              <mat-option value="3">90</mat-option> -->
+              <mat-option value="2">60</mat-option>
+              <mat-option value="3">90</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -617,7 +623,7 @@
 
           <div *ngIf="tasabase2 == 1 && pagoInteres == 1">
             <mat-form-field appearance="fill">
-              <mat-label class="letraSize labelNegro">Tasa moratoria</mat-label>
+              <mat-label class="letraSize labelNegro">Plazo de la tasa base</mat-label>
               <input class="labelNegro" value="TIIE 30 Días" [disabled]="true" #sel1 (blur)="pptos()" type="text"
                 matInput>
             </mat-form-field>
@@ -638,8 +644,8 @@
               <mat-label class="letraSize">LIBOR</mat-label>
               <mat-select [(value)]="libor">
                 <mat-option value="1">30</mat-option>
-                <!-- <mat-option value="2">60</mat-option>
-                <mat-option value="3">90</mat-option> -->
+                <mat-option value="2">60</mat-option>
+                <mat-option value="3">90</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -665,11 +671,12 @@
         <mat-form-field class="example-full-width">
           <mat-label class="letraSize">Comision</mat-label>
           <mat-select [(value)]="comision">
-            <mat-option value="Apertura">Apertura </mat-option>
-            <mat-option value="Disposición">Disposición </mat-option>
-            <mat-option value="Aniversario">Aniversario </mat-option>
-            <mat-option value="Administración">Administración </mat-option>
-            <mat-option value="Estructuración">Estructuración </mat-option>
+                <mat-option value="Apertura">Apertura </mat-option>
+                <mat-option value="Disposición">Disposición </mat-option>
+                <mat-option value="Aniversario">Aniversario </mat-option>
+                <mat-option value="Estructuración">Pago Anticipado</mat-option>
+                <mat-option value="Administración">Administración </mat-option>
+                <mat-option value="Estructuración">Estructuración </mat-option>
           </mat-select>
         </mat-form-field>
         <table>
@@ -686,7 +693,7 @@
       <div class="col-lg-4">
         <mat-form-field appearance="fill">
           <mat-label class="letraSize">Comision</mat-label>
-          <input [(ngModel)]='porComision' type="number"  min="1.01" max="1.59" step=".01" (keyup)="funcioneRevision()"
+          <input [(ngModel)]='porComision' type="number" min="1.01" max="1.59" step=".01" (keyup)="funcioneRevision()"
             matInput>
         </mat-form-field>
         <div class="typElement">
@@ -728,7 +735,7 @@
           </tr>
           <tr>
             <td>
-              FEGA
+              FIRA
             </td>
             <td>
               <input type="checkbox">
